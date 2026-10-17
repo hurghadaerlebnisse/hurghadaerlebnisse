@@ -18,6 +18,7 @@ const translations = {
       trips: 'Ausflüge',
       years: 'Jahre Erfahrung',
       guests: 'Zufriedene Gäste',
+      guestsValue: '5.000+',
       languages: 'Sprachen',
     },
     about: {
@@ -105,6 +106,7 @@ const translations = {
       trips: 'Excursions',
       years: 'Years of experience',
       guests: 'Happy guests',
+      guestsValue: '5,000+',
       languages: 'Languages',
     },
     about: {

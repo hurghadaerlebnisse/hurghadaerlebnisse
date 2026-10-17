@@ -309,26 +309,59 @@ body {
 .section-subtitle { color: rgba(245, 230, 200, 0.6); font-size: 1.125rem; max-width: 600px; margin: 0 auto; }
 
 /* ===== ABOUT ===== */
-.about { padding: 6rem 0; background: var(--color-deep); overflow: hidden; position: relative; }
-.about-grid { display: grid; gap: 4rem; align-items: center; }
-@media (min-width: 1024px) { .about-grid { grid-template-columns: 1fr 1fr; } }
+.about { padding: 6rem 0; background: var(--color-deep); position: relative; }
+.about-grid { display: grid; gap: 3rem; align-items: center; }
+.about-grid > * { min-width: 0; }
+@media (min-width: 1024px) { .about-grid { grid-template-columns: 1fr 1fr; gap: 4.5rem; } }
 
-.about-image { position: relative; }
-.about-image > img { width: 100%; height: 500px; object-fit: cover; border-radius: var(--radius-xl); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+.about-image { position: relative; padding: 1.15rem 1.15rem 2.75rem; }
+
+.about-photo {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(200, 162, 75, 0.28),
+    0 0 48px rgba(200, 162, 75, 0.16);
+}
+.about-photo::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8, 30, 45, 0.08) 30%, rgba(8, 30, 45, 0.28) 100%),
+    radial-gradient(120% 80% at 15% 85%, rgba(200, 162, 75, 0.22), transparent 55%);
+  pointer-events: none;
+}
+.about-photo img {
+  display: block; width: 100%; max-width: 100%; height: 460px;
+  object-fit: cover; object-position: center 42%;
+}
+@media (min-width: 768px) { .about-photo img { height: 520px; } }
+
+.about-photo-tag {
+  position: absolute; top: 1rem; left: 1rem; z-index: 2;
+  padding: 0.35rem 0.8rem; border-radius: 999px;
+  background: rgba(8, 30, 45, 0.55); backdrop-filter: blur(10px);
+  border: 1px solid rgba(200, 162, 75, 0.35);
+  color: var(--color-sand); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+}
 
 .about-floating-card {
-  position: absolute; bottom: -2rem; right: -1rem;
-  background: rgba(13, 43, 61, 0.85); backdrop-filter: blur(12px);
-  border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-  border: 1px solid rgba(200, 162, 75, 0.2); max-width: 280px;
+  position: absolute; left: 2rem; bottom: 0; z-index: 2;
+  background: rgba(13, 43, 61, 0.88); backdrop-filter: blur(14px);
+  border-radius: var(--radius-lg); padding: 1rem 1.25rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(200, 162, 75, 0.35); max-width: calc(100% - 3rem);
   display: flex; align-items: center; gap: 0.75rem;
 }
 .floating-icon { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)); display: flex; align-items: center; justify-content: center; color: var(--color-deep-dark); flex-shrink: 0; }
-.floating-number { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; font-weight: 700; color: var(--color-primary); display: block; }
-.about-floating-card p { color: rgba(245, 230, 200, 0.7); font-size: 0.875rem; }
+.floating-number { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; font-weight: 700; color: var(--color-primary); display: block; line-height: 1; }
+.about-floating-card p { color: rgba(245, 230, 200, 0.7); font-size: 0.875rem; margin-top: 0.15rem; }
 
-.about-frame-tl { position: absolute; top: -1rem; left: -1rem; width: 96px; height: 96px; border-top: 2px solid rgba(200, 162, 75, 0.4); border-left: 2px solid rgba(200, 162, 75, 0.4); border-top-left-radius: var(--radius-xl); }
-.about-frame-br { position: absolute; bottom: -1rem; right: -1rem; width: 96px; height: 96px; border-bottom: 2px solid rgba(200, 162, 75, 0.4); border-right: 2px solid rgba(200, 162, 75, 0.4); border-bottom-right-radius: var(--radius-xl); }
+.about-frame-tl, .about-frame-br { position: absolute; width: 88px; height: 88px; pointer-events: none; }
+.about-frame-tl { top: 0; left: 0; border-top: 2px solid rgba(200, 162, 75, 0.7); border-left: 2px solid rgba(200, 162, 75, 0.7); border-top-left-radius: 28px; }
+.about-frame-br { right: 0; bottom: 1.6rem; border-bottom: 2px solid rgba(200, 162, 75, 0.7); border-right: 2px solid rgba(200, 162, 75, 0.7); border-bottom-right-radius: 28px; }
 
 .about-text { color: rgba(245, 230, 200, 0.7); font-size: 1.125rem; line-height: 1.7; margin-bottom: 2rem; }
 
