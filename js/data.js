@@ -29,7 +29,7 @@ const categoryIcons = {
 const excursions = [
   {
     id: 'hotel-booking', categoryId: 'hotel',
-    image: 'https://images.pexels.com/photos/22643802/pexels-photo-22643802.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/hotel-booking/1.jpg',
     title: { de: 'Hotelbuchungen & Unterkünfte', en: 'Hotel Reservations & Accommodation' },
     short: { de: 'Hotels und Unterkünfte in Hurghada nach Ihren Wünschen und Ihrem Budget.', en: 'Hotels and accommodations in Hurghada tailored to your needs and budget.' },
     description: {
@@ -40,7 +40,7 @@ const excursions = [
   },
   {
     id: 'royal-sea-scope', categoryId: 'submarine',
-    image: 'https://images.pexels.com/photos/36255961/pexels-photo-36255961.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/royal-sea-scope/1.jpg',
     title: { de: 'Royal Sea Scope U-Boot', en: 'Royal Sea Scope Submarine' },
     short: { de: 'Korallenriffe aus der klimatisierten Unterwasserkabine, ca. 3 Meter unter der Oberfläche.', en: 'Coral reefs from the air-conditioned underwater cabin, approx. 3 meters below the surface.' },
     description: {
@@ -51,7 +51,7 @@ const excursions = [
   },
   {
     id: 'panorama-submarine', categoryId: 'submarine',
-    image: 'https://images.pexels.com/photos/12763812/pexels-photo-12763812.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/panorama-submarine/1.jpg',
     title: { de: 'Panorama U-Boot', en: 'Panorama Submarine' },
     short: { de: 'Korallenriffe durch den Glasboden, mit Schnorchelstopp, Ausrüstung und Erfrischungen.', en: 'Coral reefs through the glass bottom, with snorkeling stop, equipment, and refreshments.' },
     description: {
@@ -62,7 +62,7 @@ const excursions = [
   },
   {
     id: 'paradise-conquest', categoryId: 'submarine',
-    image: 'https://images.pexels.com/photos/6858233/pexels-photo-6858233.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/paradise-conquest/1.jpg',
     title: { de: 'Paradise Conquest U-Boot + Hula Hula Insel', en: 'Paradise Conquest Submarine + Hula Hula Island' },
     short: { de: 'Kombination aus U-Boot-Fahrt und Inselbesuch mit Buffet-Lunch und Afrika-Show.', en: 'Combined submarine and island excursion with buffet lunch and African show.' },
     description: {
@@ -84,7 +84,7 @@ const excursions = [
   },
   {
     id: 'adventure-submarine', categoryId: 'submarine',
-    image: 'https://images.pexels.com/photos/6858231/pexels-photo-6858231.png?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/adventure-submarine/1.jpg',
     title: { de: 'Adventure U-Boot + Magawish Insel', en: 'Adventure Submarine + Magawish Island' },
     short: { de: 'U-Boot-Abenteuer, Schnorcheln und Besuch der Magawish Insel mit Buffet-Lunch im U-Boot.', en: 'Submarine adventure, snorkeling, and visit to Magawish Island with buffet lunch inside the submarine.' },
     description: {
@@ -95,7 +95,7 @@ const excursions = [
   },
   {
     id: 'orange-bay-island', categoryId: 'island',
-    image: 'https://images.pexels.com/photos/10802752/pexels-photo-10802752.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/orange-bay-island/1.jpg',
     title: { de: 'Orange Bay Insel', en: 'Orange Bay Island' },
     short: { de: 'Bootstour mit zwei Schnorchelstops und Zeit auf der wunderschönen Orange Bay Insel.', en: 'Boat trip with two snorkeling stops and time on the beautiful Orange Bay Island.' },
     description: {
@@ -106,7 +106,7 @@ const excursions = [
   },
   {
     id: 'hula-hula-island', categoryId: 'island',
-    image: 'https://images.pexels.com/photos/946685/pexels-photo-946685.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/hula-hula-island/1.jpg',
     title: { de: 'Hula Hula Insel', en: 'Hula Hula Island' },
     short: { de: 'Bootstour mit zwei Schnorchelstops, Sandstrand und malerischer Landschaft.', en: 'Boat trip with two snorkeling stops, sandy beach, and scenic landscape.' },
     description: {
@@ -139,7 +139,7 @@ const excursions = [
   },
   {
     id: 'dolphin-house', categoryId: 'island',
-    image: 'https://images.pexels.com/photos/11740721/pexels-photo-11740721.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/dolphin-house/1.jpg',
     title: { de: 'Dolphin House Seetour', en: 'Dolphin House Sea Trip' },
     short: { de: 'Bootstour mit Schwimm- und Schnorchelstops und Chance, Delfine in freier Natur zu sehen.', en: 'Boat trip with swimming and snorkeling stops and a chance to see dolphins in the wild.' },
     description: {
@@ -150,7 +150,7 @@ const excursions = [
   },
   {
     id: 'diving-trip', categoryId: 'diving',
-    image: 'https://images.pexels.com/photos/4620455/pexels-photo-4620455.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/diving-trip/1.jpg',
     title: { de: 'Tauchausflug', en: 'Diving Trip' },
     short: { de: 'Zwei Tauchgänge an verschiedenen Orten mit professionellen Tauchlehrern.', en: 'Two scuba dives at different locations with professional diving instructors.' },
     description: {
@@ -161,7 +161,7 @@ const excursions = [
   },
   {
     id: 'orange-bay-diving', categoryId: 'diving',
-    image: 'https://images.pexels.com/photos/7001749/pexels-photo-7001749.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/orange-bay-diving/1.jpg',
     title: { de: 'Orange Bay Insel + Tauchen', en: 'Orange Bay Island + Diving' },
     short: { de: 'Kombiniertes Insel- und Taucherlebnis mit zwei Schnorchelstops und Orange Bay Besuch.', en: 'Combined island and diving experience with two snorkeling stops and Orange Bay visit.' },
     description: {
@@ -172,7 +172,7 @@ const excursions = [
   },
   {
     id: 'pirates-boat', categoryId: 'luxury',
-    image: 'https://images.pexels.com/photos/13574596/pexels-photo-13574596.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/pirates-boat/1.jpg',
     title: { de: 'Pirates Boat Luxustour', en: 'Pirates Boat Luxury Trip' },
     short: { de: 'Luxuriöse Segelboottour mit Meeresaktivitäten, Inselbesuch, Dining und Unterhaltung.', en: 'Luxury sailing boat trip with marine activities, island visit, dining, and entertainment.' },
     description: {
@@ -183,7 +183,7 @@ const excursions = [
   },
   {
     id: 'nefertari-boat', categoryId: 'luxury',
-    image: 'https://images.pexels.com/photos/30710213/pexels-photo-30710213.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/nefertari-boat/1.jpg',
     title: { de: 'Nefertari Pharaonen-Boot', en: 'Nefertari Pharaonic Boat' },
     short: { de: 'Boot im altägyptischen Stil mit U-Boot-Beobachtung, Pharaonen-Fotos und Menü.', en: 'Boat in ancient Egyptian style with submarine viewing, pharaonic photos, and set menu.' },
     description: {
@@ -194,7 +194,7 @@ const excursions = [
   },
   {
     id: 'private-glass-boat', categoryId: 'luxury',
-    image: 'https://images.pexels.com/photos/35155740/pexels-photo-35155740.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/private-glass-boat/1.jpg',
     title: { de: 'Privates Glasboot', en: 'Private Glass Boat' },
     short: { de: 'Privater Bootsausflug mit Glasboden zur Unterwasserbeobachtung und Schnorcheln.', en: 'Private boat excursion with glass bottom for underwater viewing and snorkeling.' },
     description: {
@@ -205,7 +205,7 @@ const excursions = [
   },
   {
     id: 'dolphin-show', categoryId: 'dolphin',
-    image: 'https://images.pexels.com/photos/30915666/pexels-photo-30915666.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/dolphin-show/1.jpg',
     title: { de: 'Delfinshow', en: 'Dolphin Show' },
     short: { de: 'Unterhaltsame Show mit Delfinen, Seelöwen und Robben unter professioneller Aufsicht.', en: 'Entertaining show with dolphins, sea lions, and seals under professional supervision.' },
     description: {
@@ -216,7 +216,7 @@ const excursions = [
   },
   {
     id: 'swim-dolphins', categoryId: 'dolphin',
-    image: 'https://images.pexels.com/photos/28770247/pexels-photo-28770247.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/swim-dolphins/1.jpg',
     title: { de: 'Mit Delfinen schwimmen', en: 'Swimming with Dolphins' },
     short: { de: 'Interaktives Schwimmerlebnis mit Delfinen unter Aufsicht spezialisierter Trainer.', en: 'Interactive swimming experience with dolphins under supervision of specialized trainers.' },
     description: {
@@ -227,7 +227,7 @@ const excursions = [
   },
   {
     id: 'water-sports', categoryId: 'watersports',
-    image: 'https://images.pexels.com/photos/12800806/pexels-photo-12800806.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/water-sports/1.jpg',
     title: { de: 'Wassersport', en: 'Water Sports' },
     short: { de: 'Parasailing, Bananenboot, Tube Ride, Twister und Jet Boat am Roten Meer.', en: 'Parasailing, banana boat, tube ride, twister, and jet boat on the Red Sea.' },
     description: {
@@ -238,7 +238,7 @@ const excursions = [
   },
   {
     id: 'makadi-water-world', categoryId: 'aquapark',
-    image: 'https://images.pexels.com/photos/31166929/pexels-photo-31166929.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/makadi-water-world/1.jpg',
     title: { de: 'Makadi Water World Aqua Park', en: 'Makadi Water World Aqua Park' },
     short: { de: 'Großer Wasserpark mit vielen Attraktionen, Getränken, Snacks und Mittagessen.', en: 'Major water park with many attractions, drinks, snacks, and lunch.' },
     description: {
@@ -249,7 +249,7 @@ const excursions = [
   },
   {
     id: 'amc-royal', categoryId: 'aquapark',
-    image: 'https://images.pexels.com/photos/39014804/pexels-photo-39014804.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/amc-royal/1.jpg',
     title: { de: 'AMC Royal Aqua Park', en: 'AMC Royal Aqua Park' },
     short: { de: 'Erholungstag mit Wasserattraktionen, Strand, Sandwiches und Getränken.', en: 'Recreational day with water attractions, beach, sandwiches, and drinks.' },
     description: {
@@ -271,7 +271,7 @@ const excursions = [
   },
   {
     id: 'horse-riding', categoryId: 'horse',
-    image: 'https://images.pexels.com/photos/17716816/pexels-photo-17716816.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/horse-riding/1.jpg',
     title: { de: 'Pferdereiten', en: 'Horse Riding' },
     short: { de: 'Entspanntes Reiten am Strand, in der Wüste oder beides kombiniert.', en: 'Relaxing horseback riding along the beach, desert, or both combined.' },
     description: {
@@ -282,7 +282,7 @@ const excursions = [
   },
   {
     id: 'mini-safari', categoryId: 'safari',
-    image: 'https://images.pexels.com/photos/20734775/pexels-photo-20734775.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/mini-safari/1.jpg',
     title: { de: 'Mini Safari', en: 'Mini Safari' },
     short: { de: 'Beach Buggy und Spider-Car durch die Wüste – Abenteuer pur.', en: 'Beach buggy and spider-car through the desert – pure adventure.' },
     description: {
@@ -293,7 +293,7 @@ const excursions = [
   },
   {
     id: 'mega-safari', categoryId: 'safari',
-    image: 'https://images.pexels.com/photos/13252297/pexels-photo-13252297.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/mega-safari/1.jpg',
     title: { de: 'Mega Safari', en: 'Mega Safari' },
     short: { de: 'Buggy, Spider-Car und Aktivitäten im Safari-Center.', en: 'Buggy, spider-car, and activities at the safari center.' },
     description: {
@@ -304,7 +304,7 @@ const excursions = [
   },
   {
     id: 'family-safari', categoryId: 'safari',
-    image: 'https://images.pexels.com/photos/20734772/pexels-photo-20734772.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/family-safari/1.jpg',
     title: { de: 'Family Safari', en: 'Family Safari' },
     short: { de: 'Familienfreundliches Wüstenabenteuer mit Buggy, Jeep und Beduinen-Dorf.', en: 'Family-friendly desert adventure with buggy, jeep, and Bedouin village.' },
     description: {
@@ -315,7 +315,7 @@ const excursions = [
   },
   {
     id: 'super-safari', categoryId: 'safari',
-    image: 'https://images.pexels.com/photos/20734788/pexels-photo-20734788.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/super-safari/1.jpg',
     title: { de: 'Super Safari', en: 'Super Safari' },
     short: { de: 'Umfassendes Wüstenerlebnis mit Buggy, Jeep, Beduinenkultur, Abendessen und Show.', en: 'Comprehensive desert experience with buggy, jeep, Bedouin culture, dinner, and show.' },
     description: {
@@ -326,7 +326,7 @@ const excursions = [
   },
   {
     id: 'jeep-safari', categoryId: 'safari',
-    image: 'https://images.pexels.com/photos/28356796/pexels-photo-28356796.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/jeep-safari/1.jpg',
     title: { de: 'Jeep Safari', en: 'Jeep Safari' },
     short: { de: 'Jeep-Tour durch die Wüste zum Beduinendorf mit Kultur, Kamelreiten und Abendessen.', en: 'Jeep tour through the desert to Bedouin village with culture, camel riding, and dinner.' },
     description: {
@@ -337,7 +337,7 @@ const excursions = [
   },
   {
     id: 'vip-sunset-safari', categoryId: 'safari',
-    image: 'https://images.pexels.com/photos/39180286/pexels-photo-39180286.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    image: 'assets/activities/vip-sunset-safari/1.jpg',
     title: { de: 'VIP Sonnenuntergang Safari', en: 'VIP Sunset Safari' },
     short: { de: 'Premium Wüstentour mit Buggy, Sonnenuntergang, Abendessen, Sternbeobachtung und Teleskop.', en: 'Premium desert tour with buggy, sunset, dinner, stargazing, and telescope.' },
     description: {

@@ -67,6 +67,7 @@ const translations = {
     footer: {
       tagline: 'Ägypten erleben. Zeit genießen.',
       rights: 'Alle Rechte vorbehalten.',
+      madeBy: 'Entwickelt von',
       explore: 'Entdecken',
       categories: 'Kategorien',
       contact: 'Kontakt',
@@ -153,6 +154,7 @@ const translations = {
     footer: {
       tagline: 'Experience Egypt. Enjoy the moment.',
       rights: 'All rights reserved.',
+      madeBy: 'Made by',
       explore: 'Explore',
       categories: 'Categories',
       contact: 'Contact',

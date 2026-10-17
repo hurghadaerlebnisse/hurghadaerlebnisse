@@ -11,21 +11,18 @@ const activityGalleries = {
     "assets/activities/royal-sea-scope/2.jpg",
     "assets/activities/royal-sea-scope/3.jpg",
     "assets/activities/royal-sea-scope/4.jpg",
-    "assets/activities/royal-sea-scope/5.png"
+    "assets/activities/royal-sea-scope/5.jpg"
   ],
   "panorama-submarine": [
     "assets/activities/panorama-submarine/1.jpg",
     "assets/activities/panorama-submarine/2.jpg",
     "assets/activities/panorama-submarine/3.jpg",
     "assets/activities/panorama-submarine/4.jpg",
-    "assets/activities/panorama-submarine/5.png"
+    "assets/activities/panorama-submarine/5.jpg"
   ],
   "paradise-conquest": [
     "assets/activities/paradise-conquest/1.jpg",
-    "assets/activities/paradise-conquest/2.jpg",
-    "assets/activities/paradise-conquest/3.jpg",
-    "assets/activities/paradise-conquest/4.jpg",
-    "assets/activities/paradise-conquest/5.png"
+    "assets/activities/paradise-conquest/2.jpg"
   ],
   "red-sea-dolphin-sub": [
     "assets/activities/red-sea-dolphin-sub/1.jpg",
@@ -35,25 +32,19 @@ const activityGalleries = {
     "assets/activities/red-sea-dolphin-sub/5.png"
   ],
   "adventure-submarine": [
-    "assets/activities/adventure-submarine/1.png",
+    "assets/activities/adventure-submarine/1.jpg",
     "assets/activities/adventure-submarine/2.jpg",
     "assets/activities/adventure-submarine/3.jpg",
     "assets/activities/adventure-submarine/4.jpg",
     "assets/activities/adventure-submarine/5.jpg"
   ],
   "orange-bay-island": [
-    "assets/activities/orange-bay-island/1.jpg",
-    "assets/activities/orange-bay-island/2.jpg",
-    "assets/activities/orange-bay-island/3.jpg",
-    "assets/activities/orange-bay-island/4.jpg",
-    "assets/activities/orange-bay-island/5.jpg"
+    "assets/activities/orange-bay-island/1.jpg"
   ],
   "hula-hula-island": [
     "assets/activities/hula-hula-island/1.jpg",
     "assets/activities/hula-hula-island/2.jpg",
-    "assets/activities/hula-hula-island/3.jpg",
-    "assets/activities/hula-hula-island/4.jpg",
-    "assets/activities/hula-hula-island/5.jpg"
+    "assets/activities/hula-hula-island/3.jpg"
   ],
   "amwaj-island": [
     "assets/activities/amwaj-island/1.jpg",

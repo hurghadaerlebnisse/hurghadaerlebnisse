@@ -548,7 +548,10 @@ body {
 .footer-bottom { padding: 2rem 1.5rem; border-top: 1px solid rgba(200, 162, 75, 0.1); display: flex; flex-direction: column; align-items: center; gap: 1rem; max-width: 1200px; margin: 0 auto; }
 @media (min-width: 640px) { .footer-bottom { flex-direction: row; justify-content: space-between; } }
 .footer-bottom span { color: rgba(245, 230, 200, 0.4); font-size: 0.75rem; }
-.footer-made { display: flex; align-items: center; gap: 0.25rem; }
+.footer-made { display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 0.25rem 0.35rem; }
+.footer-sep { color: rgba(245, 230, 200, 0.25); }
+.footer-credit-link { color: rgba(245, 230, 200, 0.55); text-decoration: none; transition: color 0.2s; }
+.footer-credit-link:hover { color: var(--color-primary); }
 .heart { color: var(--color-primary); }
 
 /* ===== WHATSAPP FLOAT ===== */
