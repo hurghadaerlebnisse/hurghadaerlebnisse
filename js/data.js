@@ -389,12 +389,12 @@ const heroImages = [
 ];
 
 const WHATSAPP_NUMBER = '491771498212';
-const EMAIL = 'info@agyptenzeit.com';
+const EMAIL = 'info@hurghadaerlebnisse.com';
 const PHONE_EG = '+201025328526';
 
 const contactCards = [
   { icon: 'whatsapp', label: { de: 'WhatsApp', en: 'WhatsApp' }, value: '+49 177 1498212', href: 'https://wa.me/491771498212', color: '#4ade80' },
-  { icon: 'email', label: { de: 'E-Mail', en: 'Email' }, value: 'info@agyptenzeit.com', href: 'mailto:info@agyptenzeit.com', color: '#C8A24B' },
+  { icon: 'email', label: { de: 'E-Mail', en: 'Email' }, value: EMAIL, href: `mailto:${EMAIL}`, color: '#C8A24B' },
   { icon: 'phone', label: { de: 'Telefon (Ägypten)', en: 'Phone (Egypt)' }, value: '+20 10 25328526', href: 'tel:+201025328526', color: '#1A8E8E' },
 ];
 
