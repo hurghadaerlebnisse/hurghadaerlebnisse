@@ -246,7 +246,7 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C8A24B' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
-.hero-content { position: relative; z-index: 10; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; padding: 9rem 1.1rem 5.5rem; max-width: 1290px; margin: 0 auto; box-sizing: border-box; }
+.hero-content { position: relative; z-index: 10; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; padding: 9rem 1.1rem 5.5rem; max-width: 1720px; margin: 0 auto; box-sizing: border-box; }
 .hero-upper { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; width: 100%; }
 .hero-intro { display: flex; flex-direction: column; align-items: center; width: 100%; gap: 0.9rem; }
 
@@ -349,6 +349,11 @@ body {
   transform: translateY(8px);
   transition: opacity 0.45s, transform 0.45s, border-color 0.45s, box-shadow 0.45s;
   overflow: hidden;
+  cursor: pointer;
+}
+.offer-card:hover:not(.is-active) {
+  opacity: 0.9;
+  border-color: rgba(224, 190, 102, 0.55);
 }
 .offer-card.is-active {
   opacity: 1;
@@ -502,6 +507,27 @@ body {
   .hero-content { justify-content: flex-start; gap: 0.85rem; min-height: 0; padding-top: 5.75rem; padding-bottom: 4.5rem; }
   .hero-upper, .hero-cta { flex: 0 0 auto; }
   .hero { min-height: 0; }
+}
+@media (max-width: 768px) {
+  .hero-content {
+    justify-content: flex-start;
+    gap: 0.7rem;
+    padding: 5.75rem 0.9rem 8.25rem;
+  }
+  .hero-upper,
+  .hero-cta { flex: 0 0 auto; }
+  .hero-cta { justify-content: flex-start; margin-top: 0.15rem; }
+  .hero-intro { gap: 0.4rem; }
+  .hero-title { font-size: clamp(1.85rem, 8.5vw, 2.45rem); }
+  .hero-subtitle { font-size: 0.92rem; }
+  .offer-slider { margin-top: 0.4rem; }
+  .btn-hero-primary,
+  .hero-cta .btn-outline {
+    width: min(100%, 22rem);
+    padding: 0.85rem 1.15rem;
+  }
+  .hero-scroll-hint { bottom: 0.7rem; }
+  .hero-scroll-hint span { font-size: 0.68rem; letter-spacing: 0.14em; }
 }
 @media (min-width: 640px) { .hero-cta { flex-direction: row; } }
 .btn-hero-primary { padding: 1.15rem 2.3rem; font-size: 1.15rem; }

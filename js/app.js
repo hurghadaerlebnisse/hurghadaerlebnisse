@@ -150,7 +150,7 @@ function renderOffers() {
   dots.hidden = !many;
 
   track.innerHTML = offers.map((offer, index) => `
-    <article class="offer-card" aria-roledescription="slide">
+    <article class="offer-card" aria-roledescription="slide" onclick="goToOffer(${index})">
       <span class="offer-rim" aria-hidden="true"></span>
       <span class="offer-index" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
       <div class="offer-card-top">
