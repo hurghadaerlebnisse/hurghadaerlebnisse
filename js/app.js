@@ -102,6 +102,194 @@ function setHeroSlide(idx) {
   btns.forEach((btn, i) => btn.classList.toggle('active', i === idx));
 }
 
+/* ===== OFFER SLIDER ===== */
+const OFFER_MS = 5200;
+let offers = [];
+let offerIndex = 0;
+let offerTimer = null;
+let offerResizeBound = false;
+let offerPointerX = null;
+
+function offerText(value) {
+  if (value && typeof value === 'object') return getByLang(value);
+  return value || '';
+}
+
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, (ch) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+  }[ch]));
+}
+
+function applyOfferData(data) {
+  offers = Array.isArray(data && data.offers) ? data.offers.filter(offer => offer && offer.name) : [];
+  if (offerIndex >= offers.length) offerIndex = 0;
+}
+
+function loadOffers() {
+  applyOfferData(window.SITE_OFFERS);
+}
+
+function renderOffers() {
+  const root = document.getElementById('offerSlider');
+  const track = document.getElementById('offerTrack');
+  const dots = document.getElementById('offerDots');
+  if (!root || !track || !dots) return;
+  if (!offers.length) {
+    root.hidden = true;
+    clearInterval(offerTimer);
+    return;
+  }
+  root.hidden = false;
+  root.style.setProperty('--offer-ms', `${OFFER_MS}ms`);
+  document.getElementById('offerPrev').setAttribute('aria-label', t().hero.offerPrev);
+  document.getElementById('offerNext').setAttribute('aria-label', t().hero.offerNext);
+  const many = offers.length > 1;
+  document.getElementById('offerPrev').hidden = !many;
+  document.getElementById('offerNext').hidden = !many;
+  dots.hidden = !many;
+
+  track.innerHTML = offers.map((offer, index) => `
+    <article class="offer-card" aria-roledescription="slide">
+      <span class="offer-rim" aria-hidden="true"></span>
+      <span class="offer-index" aria-hidden="true">${String(index + 1).padStart(2, '0')}</span>
+      <div class="offer-card-top">
+        <span class="offer-badge"><i></i>${escapeHtml(t().hero.offerBadge)}</span>
+        <span class="offer-time">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          ${escapeHtml(offerText(offer.time))}
+        </span>
+      </div>
+      <h2 class="offer-name">${escapeHtml(offerText(offer.name))}</h2>
+      <p class="offer-desc">${escapeHtml(offerText(offer.description))}</p>
+      <div class="offer-foot">
+        <div>
+          <span class="offer-price-label">${escapeHtml(t().hero.offerFrom)}</span>
+          <span class="offer-price">${escapeHtml(offer.price)}</span>
+        </div>
+        <button type="button" class="offer-book" onclick="scrollToSection('contact')">${escapeHtml(t().hero.offerBook)}</button>
+      </div>
+      <div class="offer-progress"><span></span></div>
+    </article>
+  `).join('');
+
+  dots.innerHTML = offers.map((_, i) => `
+    <button type="button" class="offer-dot" aria-label="${i + 1}" onclick="goToOffer(${i})"></button>
+  `).join('');
+
+  layoutOfferTrack();
+  if (!root.classList.contains('is-paused')) startOfferTimer();
+}
+
+function visibleOfferCount(innerWidth) {
+  if (innerWidth < 560) return 1;
+  if (innerWidth < 860) return 2;
+  return 3;
+}
+
+function layoutOfferTrack() {
+  const viewport = document.getElementById('offerViewport');
+  const track = document.getElementById('offerTrack');
+  if (!viewport || !track) return;
+  const cards = [...track.children];
+  if (!cards.length) return;
+  const styles = getComputedStyle(viewport);
+  const padX = (parseFloat(styles.paddingLeft) || 0) + (parseFloat(styles.paddingRight) || 0);
+  const inner = Math.max(0, viewport.clientWidth - padX);
+  if (inner < 40) return;
+  const gap = 12;
+  const visible = Math.min(visibleOfferCount(inner), cards.length);
+  const cardWidth = (inner - gap * (visible - 1)) / visible;
+  let windowStart = 0;
+  if (cards.length > visible) {
+    windowStart = offerIndex - Math.floor((visible - 1) / 2);
+    windowStart = Math.max(0, Math.min(windowStart, cards.length - visible));
+  }
+  cards.forEach((card, i) => {
+    card.style.width = `${cardWidth}px`;
+    card.style.marginRight = i === cards.length - 1 ? '0' : `${gap}px`;
+    const active = i === offerIndex;
+    const onScreen = i >= windowStart && i < windowStart + visible;
+    card.classList.toggle('is-active', active);
+    card.setAttribute('aria-hidden', onScreen ? 'false' : 'true');
+  });
+  const rowWidth = cards.length * cardWidth + (cards.length - 1) * gap;
+  const offset = cards.length <= visible
+    ? (inner - rowWidth) / 2
+    : -windowStart * (cardWidth + gap);
+  track.style.transform = `translateX(${offset}px)`;
+  document.querySelectorAll('.offer-dot').forEach((dot, i) => {
+    const active = i === offerIndex;
+    dot.classList.toggle('is-active', active);
+    if (active) dot.setAttribute('aria-current', 'true');
+    else dot.removeAttribute('aria-current');
+  });
+}
+
+function keepOfferTimer() {
+  const slider = document.getElementById('offerSlider');
+  if (!slider?.classList.contains('is-paused')) startOfferTimer();
+}
+
+function stepOffer(direction) {
+  if (offers.length < 2) return;
+  offerIndex = (offerIndex + direction + offers.length) % offers.length;
+  layoutOfferTrack();
+  keepOfferTimer();
+}
+
+function goToOffer(index) {
+  if (!Number.isInteger(index) || index < 0 || index >= offers.length) return;
+  offerIndex = index;
+  layoutOfferTrack();
+  keepOfferTimer();
+}
+
+function startOfferTimer() {
+  clearInterval(offerTimer);
+  if (offers.length < 2) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  offerTimer = setInterval(() => stepOffer(1), OFFER_MS);
+}
+
+function bindOfferControls() {
+  document.getElementById('offerPrev')?.addEventListener('click', () => stepOffer(-1));
+  document.getElementById('offerNext')?.addEventListener('click', () => stepOffer(1));
+  const slider = document.getElementById('offerSlider');
+  const viewport = document.getElementById('offerViewport');
+  if (!slider) return;
+  const pause = () => {
+    slider.classList.add('is-paused');
+    clearInterval(offerTimer);
+  };
+  const resume = () => {
+    slider.classList.remove('is-paused');
+    startOfferTimer();
+  };
+  slider.addEventListener('mouseenter', pause);
+  slider.addEventListener('mouseleave', resume);
+  slider.addEventListener('focusin', pause);
+  slider.addEventListener('focusout', (event) => {
+    if (!slider.contains(event.relatedTarget)) resume();
+  });
+  viewport?.addEventListener('pointerdown', (event) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    offerPointerX = event.clientX;
+  });
+  viewport?.addEventListener('pointerup', (event) => {
+    if (offerPointerX == null) return;
+    const delta = event.clientX - offerPointerX;
+    offerPointerX = null;
+    if (Math.abs(delta) < 48) return;
+    stepOffer(delta < 0 ? 1 : -1);
+  });
+  viewport?.addEventListener('pointercancel', () => { offerPointerX = null; });
+  if (!offerResizeBound) {
+    window.addEventListener('resize', layoutOfferTrack);
+    offerResizeBound = true;
+  }
+}
+
 /* ===== STATS ===== */
 function renderStats() {
   const grid = document.getElementById('statsGrid');
@@ -452,6 +640,7 @@ function updateTexts() {
 /* ===== RENDER ALL ===== */
 function renderAll() {
   updateTexts();
+  renderOffers();
   renderStats();
   renderAbout();
   renderFilterChips();
@@ -461,9 +650,11 @@ function renderAll() {
 }
 
 /* ===== INIT ===== */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   document.documentElement.lang = currentLang;
   document.getElementById('langLabel').textContent = currentLang.toUpperCase();
+  bindOfferControls();
   renderHero();
+  loadOffers();
   renderAll();
 });
