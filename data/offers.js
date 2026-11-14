@@ -7,12 +7,18 @@ window.SITE_OFFERS = {
         "en": "Pauschalreise"
       },
       "description": {
-        "de": "Zwei Schnorchelstops, weißer Sandstrand und Mittagessen an Bord.",
+        "de": "TRAUMURLAUB AM ROTEN MEER**
+6 Tage Pauschalreise ab München (MUC)**
+Ab unschlagbaren **399,- €** pro Person!
+4-Sterne-Hotel** direkt am hoteleigenen Strand
+Inklusive **Flug & Unterkunft**  All-Inclusive 
+ Über **30 unvergessliche Ausflüge** vor Ort buchbar
+.",
         "en": "Two snorkeling stops, a white sand beach, and lunch on board."
       },
-      "price": "24 €",
+      "price": "ab 399,00€",
       "time": {
-        "de": "Ganztägig",
+        "de": "6 Tage",
         "en": "Full day"
       }
     },
