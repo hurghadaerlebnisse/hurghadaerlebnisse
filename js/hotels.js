@@ -12,7 +12,11 @@ const FLAP_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 let hotelArea = 'all';
 let spotlightDealId = null;
 let hotelTimer = null;
-const hotelWish = { area: null, checkIn: '', nights: 7, adults: 2, children: 0, stars: null, board: null };
+const departureAirports = [
+  'Frankfurt (FRA)', 'München (MUC)', 'Düsseldorf (DUS)', 'Berlin (BER)', 'Hamburg (HAM)', 'Köln/Bonn (CGN)',
+  'Stuttgart (STR)', 'Hannover (HAJ)', 'Leipzig/Halle (LEJ)', 'Nürnberg (NUE)', 'Wien (VIE)', 'Zürich (ZRH)',
+];
+const hotelWish ={ area: null, airport: '', checkIn: '', nights: 7, adults: 2, children: 0, stars: null, board: null };
 
 function hotelDeals() {
   const deals = (window.SITE_HOTELS && Array.isArray(window.SITE_HOTELS.deals)) ? window.SITE_HOTELS.deals : [];
@@ -265,6 +269,14 @@ function renderHotelWish() {
       <label>${h.wishArea}</label>
       <div class="wish-chips">${chips('area', [{ value: null, label: h.wishAny }, ...hotelAreas.map(a => ({ value: a.id, label: a.name }))])}</div>
     </div>
+    <div class="wish-field wish-wide">
+      <label for="wishAirport">${h.wishAirport}</label>
+      <div class="wish-input">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+        <input type="text" id="wishAirport" list="wishAirportList" maxlength="60" autocomplete="off" placeholder="${h.wishAirportPlaceholder}" value="${escapeHtml(hotelWish.airport)}" oninput="hotelWish.airport = this.value; renderHotelWishSummary()" />
+      </div>
+      <datalist id="wishAirportList">${departureAirports.map(a => `<option value="${a}"></option>`).join('')}</datalist>
+    </div>
     <div class="wish-field">
       <label for="wishCheckIn">${h.checkIn}</label>
       <input type="date" id="wishCheckIn" min="${today}" value="${hotelWish.checkIn}" onchange="hotelWish.checkIn = this.value; renderHotelWishSummary()" />
@@ -298,6 +310,7 @@ function hotelWishLines() {
   const any = h.wishFlexible;
   return [
     [h.wishArea, hotelWish.area ? hotelAreaOf(hotelWish.area).name : any],
+    [h.wishAirport, hotelWish.airport.trim() || any],
     [h.checkIn, hotelWish.checkIn ? formatCheckIn(hotelWish.checkIn, { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' }) : any],
     [h.wishNights, String(hotelWish.nights)],
     [h.wishGuests, [

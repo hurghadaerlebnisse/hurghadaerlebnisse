@@ -152,18 +152,19 @@ body {
 .logo-name { display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.25rem; font-weight: 700; color: var(--color-sand); line-height: 1; }
 .logo-sub { display: block; font-size: 10px; color: var(--color-primary); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 2px; }
 
-.nav-desktop { display: flex; align-items: center; gap: 1.65rem; }
+.nav-desktop { display: flex; align-items: center; gap: 1.15rem; }
 .nav-link {
   background: none; border: none; cursor: pointer;
   font-family: 'Cormorant Garamond', Georgia, serif;
   color: #F0D48A;
-  font-size: 1.55rem;
+  font-size: 1.35rem;
   font-weight: 600;
   letter-spacing: 0.03em;
   line-height: 1;
   text-shadow: 0 2px 10px rgba(8, 30, 45, 0.75);
   position: relative;
   padding-bottom: 0.3rem;
+  white-space: nowrap;
   transition: color 0.3s;
 }
 .nav-link::after {
@@ -174,9 +175,9 @@ body {
 }
 .nav-link:hover { color: #FFF6D6; }
 .nav-link:hover::after { width: 100%; }
-@media (max-width: 1200px) {
-  .nav-desktop { gap: 1.15rem; }
-  .nav-link { font-size: 1.35rem; }
+@media (max-width: 1150px) {
+  .nav-desktop { gap: 0.75rem; }
+  .nav-link { font-size: 1.12rem; }
 }
 
 .header-right { display: flex; align-items: center; gap: 0.75rem; }
@@ -212,7 +213,7 @@ body {
 .lang-flag { display: inline-flex; width: 22px; height: 15px; border-radius: 3px; overflow: hidden; flex-shrink: 0; box-shadow: 0 0 0 1px rgba(245, 230, 200, 0.25), 0 2px 6px rgba(0, 0, 0, 0.35); }
 .lang-flag svg { width: 100%; height: 100%; display: block; }
 
-.btn-book { display: inline-flex; }
+.btn-book { display: inline-flex; white-space: nowrap; }
 .menu-toggle { display: none; background: none; border: none; color: var(--color-sand); cursor: pointer; padding: 0.5rem; }
 
 .mobile-menu {
@@ -230,7 +231,7 @@ body {
 .mobile-link:hover { color: var(--color-primary); }
 .mobile-book { margin-top: 1rem; }
 
-@media (max-width: 1024px) {
+@media (max-width: 1080px) {
   .nav-desktop { display: none; }
   .menu-toggle { display: flex; }
   .btn-book { display: none; }
@@ -833,6 +834,14 @@ body {
   background: rgba(8, 30, 45, 0.6); border: 1px solid rgba(200, 162, 75, 0.25); color: var(--color-sand);
 }
 .wish-field input[type="date"]:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 4px rgba(200, 162, 75, 0.15); }
+.wish-input { position: relative; }
+.wish-input svg { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: var(--color-primary); pointer-events: none; }
+.wish-input input {
+  width: 100%; padding: 0.6rem 0.8rem 0.6rem 2.5rem; border-radius: var(--radius); font-family: inherit; font-size: 0.9rem;
+  background: rgba(8, 30, 45, 0.6); border: 1px solid rgba(200, 162, 75, 0.25); color: var(--color-sand);
+}
+.wish-input input::placeholder { color: rgba(245, 230, 200, 0.4); }
+.wish-input input:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 4px rgba(200, 162, 75, 0.15); }
 .wish-stepper { display: inline-flex; align-items: center; border-radius: var(--radius); border: 1px solid rgba(200, 162, 75, 0.25); background: rgba(8, 30, 45, 0.6); overflow: hidden; }
 .wish-stepper button { width: 40px; height: 40px; border: none; background: none; color: var(--color-primary); font-size: 1.25rem; cursor: pointer; transition: background 0.2s; }
 .wish-stepper button:hover { background: rgba(200, 162, 75, 0.15); }
@@ -849,7 +858,7 @@ body {
 .wish-line { display: flex; align-items: baseline; gap: 0.4rem; font-size: 0.85rem; }
 .wish-line small { color: rgba(8, 30, 45, 0.6); white-space: nowrap; }
 .wish-line span { flex: 1; border-bottom: 1px dotted rgba(8, 30, 45, 0.3); transform: translateY(-3px); }
-.wish-line strong { font-weight: 700; text-align: right; }
+.wish-line strong { font-weight: 700; text-align: right; min-width: 0; overflow-wrap: anywhere; }
 .wish-send { width: 100%; padding: 0.85rem 1rem; background: linear-gradient(135deg, var(--color-deep), var(--color-deep-dark)); color: var(--color-primary-light); }
 .wish-send:hover { background: linear-gradient(135deg, var(--color-teal-dark), var(--color-deep)); }
 
