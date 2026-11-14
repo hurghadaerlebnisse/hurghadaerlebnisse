@@ -1,11 +1,4 @@
 const activityGalleries = {
-  "hotel-booking": [
-    "assets/activities/hotel-booking/1.jpg",
-    "assets/activities/hotel-booking/2.jpg",
-    "assets/activities/hotel-booking/3.jpg",
-    "assets/activities/hotel-booking/4.jpg",
-    "assets/activities/hotel-booking/5.jpg"
-  ],
   "royal-sea-scope": [
     "assets/activities/royal-sea-scope/1.jpg",
     "assets/activities/royal-sea-scope/2.jpg",

@@ -1,5 +1,4 @@
 const categories = [
-  { id: 'hotel', icon: 'hotel', image: 'https://images.pexels.com/photos/22643802/pexels-photo-22643802.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
   { id: 'submarine', icon: 'submarine', image: 'https://images.pexels.com/photos/17975646/pexels-photo-17975646.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
   { id: 'island', icon: 'island', image: 'https://images.pexels.com/photos/12858459/pexels-photo-12858459.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
   { id: 'diving', icon: 'diving', image: 'https://images.pexels.com/photos/17668226/pexels-photo-17668226.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
@@ -14,7 +13,6 @@ const categories = [
 ];
 
 const categoryIcons = {
-  hotel: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a6 6 0 0 1 6-6h6a6 6 0 0 1 6 6v3z"/></svg>',
   submarine: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.5 0 2.5 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.81 7.76"/><path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6"/><path d="M12 2v4"/><path d="M12 8v2"/></svg>',
   island: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v8.5L3 17h18l-7-6.5V2"/><path d="M2 19h20"/></svg>',
   diving: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.47-3.44 6-7 6s-7.56-2.53-8.5-6Z"/><path d="M18 12v.5"/><path d="M16 17.93A9.48 9.48 0 0 1 12 19c-3.56 0-6.06-2.53-7-6"/></svg>',
@@ -29,18 +27,6 @@ const categoryIcons = {
 };
 
 const excursions = [
-  {
-    id: 'hotel-booking', categoryId: 'hotel',
-    image: 'assets/activities/hotel-booking/1.jpg',
-    title: { de: 'Hotelbuchungen & Unterkünfte', en: 'Hotel Reservations & Accommodation' },
-    price: null,
-    short: { de: 'Hotels und Unterkünfte in Hurghada nach Ihren Wünschen und Ihrem Budget.', en: 'Hotels and accommodations in Hurghada tailored to your needs and budget.' },
-    description: {
-      de: 'Unser Service umfasst die Buchung von Hotels und Unterkünften in Hurghada und den umliegenden Touristenregionen. Wir helfen Ihnen, die passende Unterkunft entsprechend Ihrer Bedürfnisse, Vorlieben und Ihres Budgets zu finden.',
-      en: 'Our service includes booking hotels and accommodations in Hurghada and surrounding tourist areas. We help you find suitable accommodation according to your needs, preferences, and budget.',
-    },
-    includes: { de: ['Persönliche Beratung', 'Unterkünfte für jedes Budget', 'Lokale Expertise'], en: ['Personal consultation', 'Accommodations for every budget', 'Local expertise'] },
-  },
   {
     id: 'royal-sea-scope', categoryId: 'submarine',
     image: 'assets/activities/royal-sea-scope/1.jpg',

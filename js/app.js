@@ -18,11 +18,24 @@ function scrollToSection(id) {
 }
 
 /* ===== LANGUAGE ===== */
+const langFlags = {
+  de: '<svg viewBox="0 0 5 3" preserveAspectRatio="none" aria-hidden="true"><rect width="5" height="1" fill="#000"/><rect y="1" width="5" height="1" fill="#DD0000"/><rect y="2" width="5" height="1" fill="#FFCE00"/></svg>',
+  en: '<svg viewBox="0 0 60 30" preserveAspectRatio="none" aria-hidden="true"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFF" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2"/><path d="M30,0 v30 M0,15 h60" stroke="#FFF" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></svg>',
+};
+
+function renderLangSwitcher() {
+  const flag = document.getElementById('langFlag');
+  flag.dataset.flag = currentLang;
+  document.getElementById('langLabel').textContent = currentLang.toUpperCase();
+  document.querySelectorAll('.lang-flag[data-flag]').forEach(el => { el.innerHTML = langFlags[el.dataset.flag] || ''; });
+  document.querySelectorAll('.lang-menu button[data-lang]').forEach(btn => btn.classList.toggle('active', btn.dataset.lang === currentLang));
+}
+
 function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('lang', lang);
   document.documentElement.lang = lang;
-  document.getElementById('langLabel').textContent = lang.toUpperCase();
+  renderLangSwitcher();
   toggleLangMenu();
   renderAll();
 }
@@ -594,31 +607,141 @@ function sendWhatsAppExcursion(excursionId) {
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
 }
 
+/* Returns the form message (with the chosen topic) or null after nudging the user to fill it in. */
+function readContactForm() {
+  const name = document.getElementById('contactName').value.trim();
+  const message = document.getElementById('contactMessage').value.trim();
+  const intent = selectedIntent === null ? '' : t().contact.intents[selectedIntent];
+  if (!message && !intent) {
+    const pass = document.getElementById('boardingPass');
+    const field = document.getElementById('contactMessage');
+    pass.classList.remove('shake');
+    void pass.offsetWidth;
+    pass.classList.add('shake');
+    field.placeholder = t().contact.emptyMessage;
+    field.focus();
+    return null;
+  }
+  return { name, text: [intent, message].filter(Boolean).join(' – ') };
+}
+
 function sendWhatsAppForm() {
-  const name = document.getElementById('contactName').value;
-  const message = document.getElementById('contactMessage').value;
-  const msg = encodeURIComponent(`Hallo Hurghada Erlebnisse, mein Name ist ${name || '...'}. ${message || ''}`);
+  const form = readContactForm();
+  if (!form) return;
+  const msg = encodeURIComponent(`Hallo Hurghada Erlebnisse, mein Name ist ${form.name || '...'}. ${form.text}`);
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
 }
 
 function sendEmailForm() {
-  const name = document.getElementById('contactName').value;
-  const message = document.getElementById('contactMessage').value;
+  const form = readContactForm();
+  if (!form) return;
   const subject = encodeURIComponent('Anfrage über Website');
-  const body = encodeURIComponent(`Name: ${name}\n\n${message}`);
+  const body = encodeURIComponent(`Name: ${form.name}\n\n${form.text}`);
   window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
 }
 
 /* ===== CONTACT CARDS ===== */
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 function renderContactCards() {
   const container = document.getElementById('contactCards');
-  container.innerHTML = contactCards.map(card => `
-    <a href="${card.href}" target="_blank" rel="noopener" class="contact-card">
-      <div class="contact-card-icon" style="color: ${card.color}">${contactIcons[card.icon]}</div>
+  const copyIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+  container.innerHTML = contactCards.map((card, i) => `
+    <div class="contact-card" style="--accent: ${card.color}; --delay: ${i * 0.12}s">
+      <a href="${card.href}" target="_blank" rel="noopener" class="contact-card-link" aria-label="${getByLang(card.label)}: ${card.value}"></a>
+      <div class="contact-card-glow"></div>
+      <div class="contact-card-icon">${contactIcons[card.icon]}<span class="contact-card-ring"></span></div>
       <div class="contact-card-label">${getByLang(card.label)}</div>
       <div class="contact-card-value">${card.value}</div>
-    </a>
+      <button type="button" class="contact-card-copy" data-copy="${card.value}">${copyIcon}<span>${t().contact.copy}</span></button>
+    </div>
   `).join('');
+
+  container.querySelectorAll('.contact-card').forEach(card => {
+    if (!prefersReducedMotion) {
+      card.addEventListener('pointermove', (ev) => {
+        const r = card.getBoundingClientRect();
+        const x = (ev.clientX - r.left) / r.width;
+        const y = (ev.clientY - r.top) / r.height;
+        card.style.setProperty('--mx', `${x * 100}%`);
+        card.style.setProperty('--my', `${y * 100}%`);
+        card.style.setProperty('--rx', `${(0.5 - y) * 12}deg`);
+        card.style.setProperty('--ry', `${(x - 0.5) * 12}deg`);
+      });
+      card.addEventListener('pointerleave', () => {
+        card.style.setProperty('--rx', '0deg');
+        card.style.setProperty('--ry', '0deg');
+      });
+    }
+  });
+
+  container.querySelectorAll('.contact-card-copy').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(btn.dataset.copy); } catch { return; }
+      const label = btn.querySelector('span');
+      btn.classList.add('copied');
+      label.textContent = t().contact.copied;
+      setTimeout(() => { btn.classList.remove('copied'); label.textContent = t().contact.copy; }, 1600);
+    });
+  });
+}
+
+/* ===== CONTACT INTENTS ===== */
+let selectedIntent = null;
+
+function renderContactIntents() {
+  const container = document.getElementById('contactIntents');
+  container.innerHTML = t().contact.intents.map((label, i) =>
+    `<button type="button" class="bp-intent ${selectedIntent === i ? 'active' : ''}" onclick="selectIntent(${i})">${label}</button>`
+  ).join('');
+}
+
+function selectIntent(index) {
+  selectedIntent = selectedIntent === index ? null : index;
+  renderContactIntents();
+}
+
+/* ===== LIVE CLOCK (Hurghada time) ===== */
+const OPEN_HOUR = 8;
+const CLOSE_HOUR = 22;
+let liveClockTimer = null;
+
+function updateLiveClock() {
+  const locale = currentLang === 'de' ? 'de-DE' : 'en-GB';
+  const now = new Date();
+  const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Africa/Cairo', hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23',
+  }).formatToParts(now).map(p => [p.type, p.value]));
+  const hour = Number(parts.hour);
+  const minute = Number(parts.minute);
+
+  document.getElementById('liveTime').innerHTML = `${parts.hour}:${parts.minute}<small>:${parts.second}</small>`;
+  document.getElementById('liveDate').textContent = new Intl.DateTimeFormat(locale, {
+    timeZone: 'Africa/Cairo', weekday: 'long', day: 'numeric', month: 'long',
+  }).format(now);
+
+  const open = hour >= OPEN_HOUR && hour < CLOSE_HOUR;
+  const status = document.getElementById('liveStatus');
+  status.classList.toggle('online', open);
+  document.getElementById('liveStatusText').textContent = open ? t().contact.online : t().contact.offline;
+
+  // Sun travels the arc 06:00–18:00, the moon 18:00–06:00.
+  const minutes = hour * 60 + minute;
+  const day = minutes >= 360 && minutes < 1080;
+  const progress = ((minutes - (day ? 360 : 1080) + 1440) % 1440) / 720;
+  const u = 1 - progress;
+  const x = u * u * 4 + 2 * u * progress * 100 + progress * progress * 196;
+  const y = u * u * 56 + 2 * u * progress * -24 + progress * progress * 56;
+  const dot = document.getElementById('liveSunDot');
+  dot.style.left = `${x / 2}%`;
+  dot.style.top = `${(y / 60) * 100}%`;
+  dot.classList.toggle('night', !day);
+}
+
+function startLiveClock() {
+  updateLiveClock();
+  clearInterval(liveClockTimer);
+  liveClockTimer = setInterval(updateLiveClock, 1000);
 }
 
 /* ===== FOOTER CATEGORIES ===== */
@@ -653,18 +776,23 @@ function renderAll() {
   renderOffers();
   renderStats();
   renderAbout();
+  renderHotels();
   renderFilterChips();
   renderExcursions();
   renderContactCards();
+  renderContactIntents();
+  updateLiveClock();
   renderFooterCategories();
 }
 
 /* ===== INIT ===== */
 document.addEventListener('DOMContentLoaded', async () => {
   document.documentElement.lang = currentLang;
-  document.getElementById('langLabel').textContent = currentLang.toUpperCase();
+  renderLangSwitcher();
   bindOfferControls();
   renderHero();
   loadOffers();
   renderAll();
+  startLiveClock();
+  if (prefersReducedMotion) document.querySelectorAll('.bp-flight-svg').forEach(svg => svg.pauseAnimations());
 });

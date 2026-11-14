@@ -27,6 +27,7 @@
       <nav class="nav-desktop" id="navDesktop">
         <button class="nav-link" onclick="scrollToSection('hero')" data-i18n="nav.home">Start</button>
         <button class="nav-link" onclick="scrollToSection('about')" data-i18n="nav.about">Über uns</button>
+        <button class="nav-link nav-link-hotels" onclick="scrollToSection('hotels')"><span data-i18n="nav.hotels">Hotels</span><em data-i18n="nav.hotelsTag">Deals</em></button>
         <button class="nav-link" onclick="scrollToSection('excursions')" data-i18n="nav.excursions">Ausflüge</button>
         <button class="nav-link" onclick="scrollToSection('contact')" data-i18n="nav.contact">Kontakt</button>
       </nav>
@@ -34,13 +35,13 @@
       <div class="header-right">
         <div class="lang-switcher">
           <button class="lang-btn" id="langBtn" onclick="toggleLangMenu()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span class="lang-flag" id="langFlag" data-flag="de"></span>
             <span id="langLabel">DE</span>
             <svg class="lang-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="lang-menu" id="langMenu">
-            <button onclick="setLang('de')"><span>🇩🇪</span> Deutsch</button>
-            <button onclick="setLang('en')"><span>🇬🇧</span> English</button>
+            <button data-lang="de" onclick="setLang('de')"><span class="lang-flag" data-flag="de"></span> Deutsch</button>
+            <button data-lang="en" onclick="setLang('en')"><span class="lang-flag" data-flag="en"></span> English</button>
           </div>
         </div>
 
@@ -55,8 +56,9 @@
     <!-- Mobile menu -->
     <div class="mobile-menu" id="mobileMenu">
       <button class="mobile-link" onclick="scrollToSection('hero')" data-i18n="nav.home">Start</button>
-      <button class="mobile-link" onclick="scrollToSection('excursions')" data-i18n="nav.excursions">Ausflüge</button>
       <button class="mobile-link" onclick="scrollToSection('about')" data-i18n="nav.about">Über uns</button>
+      <button class="mobile-link" onclick="scrollToSection('hotels')" data-i18n="nav.hotels">Hotels</button>
+      <button class="mobile-link" onclick="scrollToSection('excursions')" data-i18n="nav.excursions">Ausflüge</button>
       <button class="mobile-link" onclick="scrollToSection('contact')" data-i18n="nav.contact">Kontakt</button>
       <button class="btn-gold mobile-book" onclick="scrollToSection('contact')" data-i18n="nav.bookNow">Jetzt buchen</button>
     </div>
@@ -152,6 +154,69 @@
     </div>
   </section>
 
+  <!-- ===== HOTELS ===== -->
+  <section id="hotels" class="hotels">
+    <div class="hotels-glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge" data-i18n="hotels.badge">Hotels</div>
+        <h2 class="section-title" data-i18n="hotels.title">Last-Minute Hotel-Deals</h2>
+        <p class="section-subtitle" data-i18n="hotels.subtitle">Spontan ans Rote Meer: handverlesene Hotels mit Sofort-Rabatt – solange die Zimmer reichen.</p>
+      </div>
+    </div>
+
+    <div class="hotel-ticker" aria-hidden="true"><div class="hotel-ticker-track" id="hotelTicker"></div></div>
+
+    <div class="container">
+      <div class="hotel-tabs" id="hotelTabs"></div>
+
+      <div class="hotels-stage">
+        <article class="deal-spotlight" id="dealSpotlight" aria-live="polite"></article>
+
+        <div class="flap-board">
+          <div class="flap-board-head">
+            <div class="flap-board-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/></svg>
+              <span data-i18n="hotels.boardTitle">Last-Minute-Board</span>
+            </div>
+            <div class="flap-board-clock"><i></i>HRG <span id="hotelBoardClock">--:--</span></div>
+          </div>
+          <div class="board-cols" aria-hidden="true">
+            <span data-i18n="hotels.colDest">Ziel</span>
+            <span data-i18n="hotels.colHotel">Hotel</span>
+            <span data-i18n="hotels.checkIn">Anreise</span>
+            <span data-i18n="hotels.colNights">Nächte</span>
+            <span data-i18n="hotels.colBoard">Verpfl.</span>
+            <span data-i18n="hotels.colPrice">Preis</span>
+          </div>
+          <div class="board-rows" id="hotelBoardRows"></div>
+          <div class="flap-board-foot" data-i18n="hotels.boardFoot">Preise pro Person für den gesamten Aufenthalt</div>
+        </div>
+      </div>
+
+      <div class="hotel-wish" id="hotelWish">
+        <div class="hotel-wish-intro">
+          <div class="section-badge" data-i18n="hotels.wishBadge">Hotel-Service</div>
+          <h3 data-i18n="hotels.wishTitle">Ihr Wunschhotel – wir finden es</h3>
+          <p data-i18n="hotels.wishText">Wir buchen Hotels und Unterkünfte in Hurghada und den umliegenden Urlaubsorten – passend zu Ihren Wünschen, Vorlieben und Ihrem Budget.</p>
+          <ul class="hotel-features" id="hotelFeatures"></ul>
+        </div>
+        <div class="hotel-wish-form" id="hotelWishForm"></div>
+        <div class="hotel-wish-ticket">
+          <div class="wish-ticket-head">
+            <span data-i18n="hotels.wishSummary">Ihre Anfrage</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/></svg>
+          </div>
+          <div class="wish-lines" id="hotelWishSummary"></div>
+          <button class="btn-gold wish-send" onclick="sendWhatsAppHotelWish()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <span data-i18n="hotels.wishSend">Wunsch per WhatsApp senden</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== EXCURSIONS ===== -->
   <section id="excursions" class="excursions">
     <div class="container">
@@ -178,6 +243,9 @@
 
   <!-- ===== CONTACT ===== -->
   <section id="contact" class="contact">
+    <div class="contact-aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="contact-bubbles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
     <div class="container">
       <div class="section-header">
         <div class="section-badge" data-i18n="contact.badge">Kontakt</div>
@@ -187,52 +255,118 @@
 
       <div class="contact-cards" id="contactCards"></div>
 
-      <div class="contact-form-wrap">
-        <div class="contact-form-left">
-          <div class="form-group">
-            <label data-i18n="contact.name">Ihr Name</label>
-            <input type="text" id="contactName" placeholder="Ihr Name" data-i18n-placeholder="contact.namePlaceholder" />
+      <div class="contact-stage">
+        <div class="boarding-pass" id="boardingPass">
+          <div class="bp-main">
+            <div class="bp-head">
+              <span class="bp-airline">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+                Hurghada Erlebnisse
+              </span>
+              <span class="bp-tag" data-i18n="contact.passLabel">Boarding Pass</span>
+            </div>
+
+            <div class="bp-route">
+              <div class="bp-city">
+                <span class="bp-code">YOU</span>
+                <small data-i18n="contact.fromCity">Ihr Zuhause</small>
+              </div>
+              <div class="bp-flight" aria-hidden="true">
+                <svg class="bp-flight-svg" viewBox="0 0 200 64">
+                  <path id="bpArc" d="M8,56 Q100,-14 192,56" fill="none" stroke="rgba(200,162,75,0.35)" stroke-width="1.5" stroke-dasharray="3 5"/>
+                  <path class="bp-trail" d="M8,56 Q100,-14 192,56" fill="none" stroke="url(#bpTrailGrad)" stroke-width="2.5" stroke-linecap="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100">
+                    <animate attributeName="stroke-dashoffset" values="100;0;0" keyTimes="0;0.8;1" dur="5s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="1;1;0" keyTimes="0;0.8;1" dur="5s" repeatCount="indefinite"/>
+                  </path>
+                  <defs>
+                    <linearGradient id="bpTrailGrad" x1="0" x2="1">
+                      <stop offset="0" stop-color="#C8A24B" stop-opacity="0"/>
+                      <stop offset="1" stop-color="#E0BE66"/>
+                    </linearGradient>
+                  </defs>
+                  <circle cx="8" cy="56" r="3.5" fill="#C8A24B"/>
+                  <circle cx="192" cy="56" r="3.5" fill="#C8A24B"/>
+                  <circle class="bp-pulse" cx="192" cy="56" r="3.5" fill="none" stroke="#E0BE66" stroke-width="1.5"/>
+                  <g class="bp-plane">
+                    <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" transform="translate(-9,-9) scale(0.75) rotate(90 12 12)"/>
+                    <animateMotion dur="5s" repeatCount="indefinite" rotate="auto" keyPoints="0;1;1" keyTimes="0;0.8;1" calcMode="linear"><mpath href="#bpArc"/></animateMotion>
+                  </g>
+                </svg>
+              </div>
+              <div class="bp-city bp-city-end">
+                <span class="bp-code">HRG</span>
+                <small>Hurghada</small>
+              </div>
+            </div>
+
+            <div class="bp-intents-label" data-i18n="contact.intentsLabel">Worum geht es?</div>
+            <div class="bp-intents" id="contactIntents"></div>
+
+            <div class="form-group">
+              <label for="contactName" data-i18n="contact.name">Ihr Name</label>
+              <input type="text" id="contactName" placeholder="Ihr Name" data-i18n-placeholder="contact.namePlaceholder" />
+            </div>
+            <div class="form-group">
+              <label for="contactMessage" data-i18n="contact.message">Ihre Nachricht</label>
+              <textarea id="contactMessage" rows="4" placeholder="Ihre Nachricht..." data-i18n-placeholder="contact.messagePlaceholder"></textarea>
+            </div>
+            <div class="form-actions">
+              <button class="btn-gold" onclick="sendWhatsAppForm()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                <span data-i18n="contact.sendWhatsapp">Über WhatsApp senden</span>
+              </button>
+              <button class="btn-outline" onclick="sendEmailForm()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                <span data-i18n="contact.send">Nachricht senden</span>
+              </button>
+            </div>
           </div>
-          <div class="form-group">
-            <label data-i18n="contact.message">Ihre Nachricht</label>
-            <textarea id="contactMessage" rows="5" placeholder="Ihre Nachricht..." data-i18n-placeholder="contact.messagePlaceholder"></textarea>
-          </div>
-          <div class="form-actions">
-            <button class="btn-gold" onclick="sendWhatsAppForm()">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-              <span data-i18n="contact.sendWhatsapp">Über WhatsApp senden</span>
-            </button>
-            <button class="btn-outline" onclick="sendEmailForm()">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-              <span data-i18n="contact.send">Nachricht senden</span>
-            </button>
+
+          <div class="bp-stub">
+            <div class="bp-stub-row"><small data-i18n="contact.flight">Flug</small><strong>HE 2026</strong></div>
+            <div class="bp-stub-row"><small>Gate</small><strong>WhatsApp</strong></div>
+            <div class="bp-stub-row"><small data-i18n="contact.seat">Sitz</small><strong>1A</strong></div>
+            <div class="bp-stub-row"><small>Boarding</small><strong>08–22</strong></div>
+            <div class="bp-barcode" aria-hidden="true"></div>
           </div>
         </div>
 
-        <div class="contact-form-right">
+        <div class="contact-live">
+          <div class="live-clock">
+            <div class="live-clock-head">
+              <span class="live-clock-label" data-i18n="contact.localTime">Ortszeit Hurghada</span>
+              <span class="live-status" id="liveStatus"><i></i><span id="liveStatusText"></span></span>
+            </div>
+            <div class="live-time" id="liveTime">--:--<small>:--</small></div>
+            <div class="live-date" id="liveDate"></div>
+            <div class="live-sun" aria-hidden="true">
+              <svg viewBox="0 0 200 60" preserveAspectRatio="none"><path d="M4,56 Q100,-24 196,56" fill="none" stroke="rgba(245,230,200,0.15)" stroke-width="1.5" vector-effect="non-scaling-stroke"/></svg>
+              <span class="live-sun-dot" id="liveSunDot"></span>
+            </div>
+          </div>
+
           <div class="contact-info-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             <span data-i18n="contact.hours">Erreichbar täglich von 8:00 – 22:00 Uhr</span>
           </div>
-          <div class="contact-info-item">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <div>
-              <strong>Hurghada, Red Sea</strong>
-              <small data-i18n="contact.egypt">Ägypten</small>
-            </div>
-          </div>
+
           <div class="contact-image">
-            <img src="https://images.pexels.com/photos/22643902/pexels-photo-22643902.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Hurghada" />
+            <img src="https://images.pexels.com/photos/22643902/pexels-photo-22643902.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Hurghada" loading="lazy" />
+            <svg class="contact-image-waves" viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M0,30 C150,60 350,0 600,30 C850,60 1050,0 1200,30 L1200,60 L0,60 Z"/>
+            </svg>
             <div class="contact-image-overlay">
-              <span class="contact-image-title">Hurghada</span>
-              <span class="contact-image-sub">Red Sea · Egypt</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div>
+                <span class="contact-image-title">Hurghada, Red Sea</span>
+                <span class="contact-image-sub" data-i18n="contact.egypt">Ägypten</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="footer-accent"></div>
@@ -255,8 +389,9 @@
         <h4 data-i18n="footer.explore">Entdecken</h4>
         <ul>
           <li><button onclick="scrollToSection('hero')" data-i18n="nav.home">Start</button></li>
-          <li><button onclick="scrollToSection('excursions')" data-i18n="nav.excursions">Ausflüge</button></li>
           <li><button onclick="scrollToSection('about')" data-i18n="nav.about">Über uns</button></li>
+          <li><button onclick="scrollToSection('hotels')" data-i18n="nav.hotels">Hotels</button></li>
+          <li><button onclick="scrollToSection('excursions')" data-i18n="nav.excursions">Ausflüge</button></li>
           <li><button onclick="scrollToSection('contact')" data-i18n="nav.contact">Kontakt</button></li>
         </ul>
       </div>
@@ -291,9 +426,11 @@
   </a>
 
   <script src="data/offers.js"></script>
+  <script src="data/hotels.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/data.js"></script>
   <script src="js/galleries.js"></script>
+  <script src="js/hotels.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
