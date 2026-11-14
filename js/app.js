@@ -376,6 +376,13 @@ function handleSearch() {
   renderExcursions();
 }
 
+function priceHtml(price) {
+  if (!price) return `<span class="price-amount price-on-request">${t().excursion.priceOnRequest}</span>`;
+  const from = price.from ? `<span class="price-from">${t().excursion.priceFrom}</span> ` : '';
+  const per = price.per === 'boat' ? t().excursion.perBoat : t().excursion.perPerson;
+  return `${from}<span class="price-amount">${price.amount} €</span> <span class="price-per">${per}</span>`;
+}
+
 function renderExcursions() {
   const grid = document.getElementById('excursionGrid');
   const loadMoreWrap = document.getElementById('loadMoreWrap');
@@ -407,6 +414,7 @@ function renderExcursions() {
           <h3 class="excursion-card-title">${getByLang(e.title)}</h3>
           <p class="excursion-card-short">${getByLang(e.short)}</p>
           <div class="excursion-tags">${tagsHtml}</div>
+          <div class="excursion-card-price">${priceHtml(e.price)}</div>
           <div class="excursion-card-actions">
             <button class="excursion-card-details" onclick="event.stopPropagation(); openModal('${e.id}')">
               ${t().excursion.details}
@@ -538,6 +546,8 @@ function openModal(excursionId) {
     </div>
     <div class="modal-body">
       <h2 class="modal-title">${getByLang(e.title)}</h2>
+      <div class="modal-price">${priceHtml(e.price)}</div>
+      ${e.price && e.price.note ? `<p class="modal-price-note">${getByLang(e.price.note)}</p>` : ''}
       <p class="modal-desc">${getByLang(e.description)}</p>
       <h3 class="modal-includes-title">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>

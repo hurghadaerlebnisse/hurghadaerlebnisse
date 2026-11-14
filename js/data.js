@@ -10,6 +10,7 @@ const categories = [
   { id: 'horse', icon: 'horse', image: 'https://images.pexels.com/photos/17716816/pexels-photo-17716816.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
   { id: 'safari', icon: 'safari', image: 'https://images.pexels.com/photos/28356796/pexels-photo-28356796.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
   { id: 'fishing', icon: 'fishing', image: 'https://images.pexels.com/photos/29953803/pexels-photo-29953803.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { id: 'wellness', icon: 'wellness', image: 'assets/activities/massage-spa/1.jpg' },
 ];
 
 const categoryIcons = {
@@ -24,6 +25,7 @@ const categoryIcons = {
   horse: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>',
   safari: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>',
   fishing: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.47-3.44 6-7 6s-7.56-2.53-8.5-6Z"/><path d="M18 12v.5"/><path d="M16 17.93a9.77 9.77 0 0 1 0-11.86"/><path d="M7 10.67C7 8 5.58 5.97 2.73 5.5c-1 1.5-1 5 .23 6.5-1.24 1.5-1.24 5-.23 6.5C5.58 18.03 7 16 7 13.33"/><path d="M10.46 7.26C10.2 5.88 9.17 4.24 8 3h5.8a2 2 0 0 1 1.98 1.67l.23 1.4"/><path d="m16.01 17.93-.23 1.4A2 2 0 0 1 13.8 21H9.5a5.96 5.96 0 0 0 1.49-3.98"/></svg>',
+  wellness: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>',
 };
 
 const excursions = [
@@ -31,6 +33,7 @@ const excursions = [
     id: 'hotel-booking', categoryId: 'hotel',
     image: 'assets/activities/hotel-booking/1.jpg',
     title: { de: 'Hotelbuchungen & Unterkünfte', en: 'Hotel Reservations & Accommodation' },
+    price: null,
     short: { de: 'Hotels und Unterkünfte in Hurghada nach Ihren Wünschen und Ihrem Budget.', en: 'Hotels and accommodations in Hurghada tailored to your needs and budget.' },
     description: {
       de: 'Unser Service umfasst die Buchung von Hotels und Unterkünften in Hurghada und den umliegenden Touristenregionen. Wir helfen Ihnen, die passende Unterkunft entsprechend Ihrer Bedürfnisse, Vorlieben und Ihres Budgets zu finden.',
@@ -42,6 +45,7 @@ const excursions = [
     id: 'royal-sea-scope', categoryId: 'submarine',
     image: 'assets/activities/royal-sea-scope/1.jpg',
     title: { de: 'Royal Sea Scope U-Boot', en: 'Royal Sea Scope Submarine' },
+    price: { amount: 25 },
     short: { de: 'Korallenriffe aus der klimatisierten Unterwasserkabine, ca. 3 Meter unter der Oberfläche.', en: 'Coral reefs from the air-conditioned underwater cabin, approx. 3 meters below the surface.' },
     description: {
       de: 'Genießen Sie die Schönheit des Roten Meeres und seiner spektakulären Meeresfauna vom Oberdeck und aus der klimatisierten Unterwasserkabine, etwa 3 Meter unter der Wasseroberfläche. Beobachten Sie farbenprächtige Korallenriffe und eine Vielzahl von Fischen durch die Panorama-Fenster auf beiden Seiten des U-Boots. Ein Schnorchel- und Schwimmstopp ist ebenfalls enthalten.',
@@ -53,6 +57,7 @@ const excursions = [
     id: 'panorama-submarine', categoryId: 'submarine',
     image: 'assets/activities/panorama-submarine/1.jpg',
     title: { de: 'Panorama U-Boot', en: 'Panorama Submarine' },
+    price: { amount: 18 },
     short: { de: 'Korallenriffe durch den Glasboden, mit Schnorchelstopp, Ausrüstung und Erfrischungen.', en: 'Coral reefs through the glass bottom, with snorkeling stop, equipment, and refreshments.' },
     description: {
       de: 'Genießen Sie den Blick auf farbenprächtige Korallenriffe und die Meeresfauna durch den Glasboden des U-Boots. Der Ausflug umfasst einen Schnorchelstopp zum Erkunden der Unterwasserwelt sowie Schnorchelausrüstung, Wasser und Erfrischungen.',
@@ -64,6 +69,7 @@ const excursions = [
     id: 'paradise-conquest', categoryId: 'submarine',
     image: 'assets/activities/paradise-conquest/1.jpg',
     title: { de: 'Paradise Conquest U-Boot + Hula Hula Insel', en: 'Paradise Conquest Submarine + Hula Hula Island' },
+    price: { amount: 35 },
     short: { de: 'Kombination aus U-Boot-Fahrt und Inselbesuch mit Buffet-Lunch und Afrika-Show.', en: 'Combined submarine and island excursion with buffet lunch and African show.' },
     description: {
       de: 'Eine Kombination aus U-Boot- und Inselausflug mit einzigartigem Meereserlebnis. Genießen Sie den Blick auf Korallenriffe und farbenfrohe Fische vom U-Boot, gefolgt von einem Schnorchelstopp und einem Besuch der Hula Hula Insel. Das Paket umfasst ein offenes Buffet-Mittagessen auf der Insel, ein Getränk zum Mittagessen, Erfrischungen während der U-Boot-Fahrt, eine leichte Schulter- und Nackenmassage sowie eine Afrika-Show an Bord.',
@@ -75,6 +81,7 @@ const excursions = [
     id: 'red-sea-dolphin-sub', categoryId: 'submarine',
     image: 'https://images.pexels.com/photos/13010783/pexels-photo-13010783.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     title: { de: 'Red Sea Dolphin U-Boot + Orange Bay Insel', en: 'Red Sea Dolphin Submarine + Orange Bay Island' },
+    price: { amount: 35 },
     short: { de: 'Unterwassererkundung kombiniert mit Entspannung auf der Orange Bay Insel.', en: 'Underwater exploration combined with relaxation on Orange Bay Island.' },
     description: {
       de: 'Kombinieren Sie Unterwassererkundung mit einem entspannten Inselbesuch. Entdecken Sie farbenfrohe Fische und Korallenriffe vom U-Boot, genießen Sie einen Schnorchelstopp und besuchen Sie die Orange Bay Insel. Das Paket umfasst ein offenes Buffet-Mittagessen auf der Insel, Softdrinks wie Cola und Wasser während der U-Boot-Fahrt sowie Schnorchelausrüstung.',
@@ -86,6 +93,7 @@ const excursions = [
     id: 'adventure-submarine', categoryId: 'submarine',
     image: 'assets/activities/adventure-submarine/1.jpg',
     title: { de: 'Adventure U-Boot + Magawish Insel', en: 'Adventure Submarine + Magawish Island' },
+    price: { amount: 35 },
     short: { de: 'U-Boot-Abenteuer, Schnorcheln und Besuch der Magawish Insel mit Buffet-Lunch im U-Boot.', en: 'Submarine adventure, snorkeling, and visit to Magawish Island with buffet lunch inside the submarine.' },
     description: {
       de: 'Genießen Sie eine Kombination aus U-Boot-Erkundung, Schnorcheln und einem Besuch der Magawish Insel. Das Programm umfasst Unterwasserblicke auf Korallenriffe und farbenfrohe Fische, einen Schnorchelstopp und Zeit auf der Magawish Insel. Gäste können ein offenes Buffet-Mittagessen im U-Boot genießen, Cola und Wasser während der Fahrt, Schnorchelausrüstung und eine Party auf dem Oberdeck vor dem Swimmingpool.',
@@ -97,6 +105,7 @@ const excursions = [
     id: 'orange-bay-island', categoryId: 'island',
     image: 'assets/activities/orange-bay-island/1.jpg',
     title: { de: 'Orange Bay Insel', en: 'Orange Bay Island' },
+    price: { amount: 24 },
     short: { de: 'Bootstour mit zwei Schnorchelstops und Zeit auf der wunderschönen Orange Bay Insel.', en: 'Boat trip with two snorkeling stops and time on the beautiful Orange Bay Island.' },
     description: {
       de: 'Genießen Sie eine Bootstour, die Schnorcheln und Entspannung auf der wunderschönen Orange Bay Insel kombiniert. Das Programm umfasst zwei Schnorchelstops zur Erkundung der Meeresfauna und Korallenriffe, Zeit am Sandstrand und in der malerischen Umgebung der Insel sowie Zugang zu attraktiven Fotospots. Mittagessen und Erfrischungen werden an Bord serviert, Schnorchelausrüstung wird gestellt.',
@@ -108,6 +117,7 @@ const excursions = [
     id: 'hula-hula-island', categoryId: 'island',
     image: 'assets/activities/hula-hula-island/1.jpg',
     title: { de: 'Hula Hula Insel', en: 'Hula Hula Island' },
+    price: { amount: 60 },
     short: { de: 'Bootstour mit zwei Schnorchelstops, Sandstrand und malerischer Landschaft.', en: 'Boat trip with two snorkeling stops, sandy beach, and scenic landscape.' },
     description: {
       de: 'Entdecken Sie die Schönheit des Roten Meeres mit einer Bootstour, die zwei Schnorchelstops zur Erkundung der Meeresfauna und Korallenriffe bietet. Entspannen Sie am Sandstrand der Insel, genießen Sie die natürliche Landschaft und machen Sie unvergessliche Fotos. Mittagessen und Erfrischungen werden an Bord serviert, einige Pakete beinhalten auch eine leichte Schulter- und Nackenmassage.',
@@ -119,6 +129,7 @@ const excursions = [
     id: 'amwaj-island', categoryId: 'island',
     image: 'https://images.pexels.com/photos/4747782/pexels-photo-4747782.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     title: { de: 'Amwaj Insel', en: 'Amwaj Island' },
+    price: { amount: 30 },
     short: { de: 'Entspannte Bootstour zur Amwaj Insel mit Strand, Buffet-Lunch und Schnorchelstopp.', en: 'Relaxing boat trip to Amwaj Island with beach, buffet lunch, and snorkeling stop.' },
     description: {
       de: 'Genießen Sie eine entspannte Bootstour zur Amwaj Insel, wo Sie am Strand entspannen und die umgebende Meereslandschaft bewundern können. Das Programm umfasst Zeit auf der Insel, ein offenes Buffet-Mittagessen und einen Schnorchelstopp mit der benötigten Ausrüstung.',
@@ -130,6 +141,7 @@ const excursions = [
     id: 'sunset-white-island', categoryId: 'island',
     image: 'https://images.pexels.com/photos/22643850/pexels-photo-22643850.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     title: { de: 'Sonnenuntergangstour zur White Island', en: 'Sunset Trip to White Island' },
+    price: { amount: 20 },
     short: { de: 'Malerische Bootsfahrt zur White Island mit Sonnenuntergang, Erfrischungen und frischem Obst.', en: 'Scenic boat excursion to White Island with sunset, refreshments, and fresh fruit.' },
     description: {
       de: 'Genießen Sie eine malerische Bootsfahrt zur White Island und bewundern Sie den wunderschönen Sonnenuntergang über dem Roten Meer. Entspannen Sie, machen Sie unvergessliche Fotos und beobachten Sie, wie der Himmel seine Farben wechselt, während die Sonne über dem Wasser untergeht. Der Ausflug umfasst Erfrischungen und frisches Obst.',
@@ -141,6 +153,7 @@ const excursions = [
     id: 'dolphin-house', categoryId: 'island',
     image: 'assets/activities/dolphin-house/1.jpg',
     title: { de: 'Dolphin House Seetour', en: 'Dolphin House Sea Trip' },
+    price: { amount: 28 },
     short: { de: 'Bootstour mit Schwimm- und Schnorchelstops und Chance, Delfine in freier Natur zu sehen.', en: 'Boat trip with swimming and snorkeling stops and a chance to see dolphins in the wild.' },
     description: {
       de: 'Genießen Sie eine Bootstour, die die Erkundung von Korallenriffen und Meeresfauna im Roten Meer bietet. Das Programm umfasst zwei Schwimm- und Schnorchelstops, einen Besuch des Dolphin House Gebiets, wo gute Chancen bestehen, Delfine in ihrem natürlichen Lebensraum zu sehen, sowie Mittagessen und Erfrischungen an Bord. Delfinsichtungen sind nicht garantiert.',
@@ -152,6 +165,7 @@ const excursions = [
     id: 'diving-trip', categoryId: 'diving',
     image: 'assets/activities/diving-trip/1.jpg',
     title: { de: 'Tauchausflug', en: 'Diving Trip' },
+    price: { amount: 34 },
     short: { de: 'Zwei Tauchgänge an verschiedenen Orten mit professionellen Tauchlehrern.', en: 'Two scuba dives at different locations with professional diving instructors.' },
     description: {
       de: 'Entdecken Sie die wunderschönen Korallenriffe und die vielfältige Fischwelt des Roten Meeres bei einem Tauchausflug. Das Programm umfasst zwei Tauchgänge an verschiedenen Orten mit Tauchausrüstung, begleitet von professionellen Tauchlehrern. Gäste können auch schnorcheln, ein Mittagessen an Bord genießen sowie heiße und kalte Getränke.',
@@ -163,6 +177,7 @@ const excursions = [
     id: 'orange-bay-diving', categoryId: 'diving',
     image: 'assets/activities/orange-bay-diving/1.jpg',
     title: { de: 'Orange Bay Insel + Tauchen', en: 'Orange Bay Island + Diving' },
+    price: { amount: 50 },
     short: { de: 'Kombiniertes Insel- und Taucherlebnis mit zwei Schnorchelstops und Orange Bay Besuch.', en: 'Combined island and diving experience with two snorkeling stops and Orange Bay visit.' },
     description: {
       de: 'Genießen Sie ein kombiniertes Insel- und Taucherlebnis im Roten Meer. Das Programm umfasst zwei Schnorchelstops, ein Taucherlebnis begleitet von Spezialisten, einen Besuch der Orange Bay Insel, ein Mittagessen an Bord, Getränke während der gesamten Fahrt und Schnorchelausrüstung.',
@@ -174,6 +189,7 @@ const excursions = [
     id: 'pirates-boat', categoryId: 'luxury',
     image: 'assets/activities/pirates-boat/1.jpg',
     title: { de: 'Pirates Boat Luxustour', en: 'Pirates Boat Luxury Trip' },
+    price: { amount: 50 },
     short: { de: 'Luxuriöse Segelboottour mit Meeresaktivitäten, Inselbesuch, Dining und Unterhaltung.', en: 'Luxury sailing boat trip with marine activities, island visit, dining, and entertainment.' },
     description: {
       de: 'Genießen Sie einen unvergesslichen Ausflug auf dem luxuriösen Pirates-Segelboot, das Meeresaktivitäten, Inselbesuch, Dining und Unterhaltung kombiniert. Das Programm umfasst einen Schnorchelstopp und einen Inselbesuch. Ein offenes Buffet-Mittagessen mit Meeresfrüchten wie Garnelen und Calamari, Grillhähnchen, Kofta, Meeresfrüchtesuppe, Reis, Nudeln, Gemüse, Salaten und Obst wird serviert. Getränke und Musik an Bord inklusive.',
@@ -185,6 +201,7 @@ const excursions = [
     id: 'nefertari-boat', categoryId: 'luxury',
     image: 'assets/activities/nefertari-boat/1.jpg',
     title: { de: 'Nefertari Pharaonen-Boot', en: 'Nefertari Pharaonic Boat' },
+    price: { amount: 60 },
     short: { de: 'Boot im altägyptischen Stil mit U-Boot-Beobachtung, Pharaonen-Fotos und Menü.', en: 'Boat in ancient Egyptian style with submarine viewing, pharaonic photos, and set menu.' },
     description: {
       de: 'Erleben Sie einen besonderen Ausflug auf einem im altägyptischen Architekturstil gestalteten Boot. Das Programm umfasst ein Unterwasserbeobachtungserlebnis durch das im Boot integrierte U-Boot, mit dem Gäste Korallenriffe und Meeresfauna beobachten können, gefolgt von einem Schwimm- und Schnorchelstopp. Gäste können traditionelle Pharaonen-Kostüme tragen und Souvenirfotos im pharaonischen Salon machen. Mittag- oder Abendessen als Set-Menü mit Meeresfrüchten oder Grillgerichten, Getränke inklusive.',
@@ -196,6 +213,7 @@ const excursions = [
     id: 'private-glass-boat', categoryId: 'luxury',
     image: 'assets/activities/private-glass-boat/1.jpg',
     title: { de: 'Privates Glasboot', en: 'Private Glass Boat' },
+    price: { amount: 110, per: 'boat', note: { de: 'Privatboot für bis zu 6 Personen', en: 'Private boat for up to 6 people' } },
     short: { de: 'Privater Bootsausflug mit Glasboden zur Unterwasserbeobachtung und Schnorcheln.', en: 'Private boat excursion with glass bottom for underwater viewing and snorkeling.' },
     description: {
       de: 'Genießen Sie einen privaten Bootsausflug und entdecken Sie die Unterwasserschönheit des Roten Meeres durch den Glasboden. Der Ausflug umfasst die Beobachtung von Korallenriffen und farbenfrohen Fischen sowie Schnorcheln. Längere Ausflüge können einen Stopp nahe der Abu Minqar Insel beinhalten, um die umgebende Meereslandschaft zu genießen.',
@@ -207,6 +225,7 @@ const excursions = [
     id: 'dolphin-show', categoryId: 'dolphin',
     image: 'assets/activities/dolphin-show/1.jpg',
     title: { de: 'Delfinshow', en: 'Dolphin Show' },
+    price: { amount: 55, note: { de: 'Komplettpaket: Delfinshow, Fotos & Schwimmen mit Delfinen', en: 'Complete package: dolphin show, photos & swimming with dolphins' } },
     short: { de: 'Unterhaltsame Show mit Delfinen, Seelöwen und Robben unter professioneller Aufsicht.', en: 'Entertaining show with dolphins, sea lions, and seals under professional supervision.' },
     description: {
       de: 'Genießen Sie eine unterhaltsame Show mit Delfinen und anderen Meereslebewesen. Das Programm umfasst Delfinvorführungen, Seelöwenshows, Seehund- und Seekatzen-Vorführungen mit einer Vielzahl von Bewegungen, Sprüngen und interaktiven Demonstrationen, präsentiert unter der Aufsicht professioneller Trainer.',
@@ -218,6 +237,7 @@ const excursions = [
     id: 'swim-dolphins', categoryId: 'dolphin',
     image: 'assets/activities/swim-dolphins/1.jpg',
     title: { de: 'Mit Delfinen schwimmen', en: 'Swimming with Dolphins' },
+    price: { amount: 55, note: { de: 'Komplettpaket: Delfinshow, Fotos & Schwimmen mit Delfinen', en: 'Complete package: dolphin show, photos & swimming with dolphins' } },
     short: { de: 'Interaktives Schwimmerlebnis mit Delfinen unter Aufsicht spezialisierter Trainer.', en: 'Interactive swimming experience with dolphins under supervision of specialized trainers.' },
     description: {
       de: 'Genießen Sie ein interaktives Schwimmerlebnis mit Delfinen in Schwimmbecken unter der Aufsicht spezialisierter Trainer. Dieses Erlebnis bietet die Möglichkeit, mit Delfinen aus nächster Nähe in einer überwachten Umgebung zu interagieren.',
@@ -229,6 +249,7 @@ const excursions = [
     id: 'water-sports', categoryId: 'watersports',
     image: 'assets/activities/water-sports/1.jpg',
     title: { de: 'Wassersport', en: 'Water Sports' },
+    price: { amount: 19, from: true, note: { de: 'Parasailing: Einzel 19 €, Tandem 25 €', en: 'Parasailing: single €19, tandem €25' } },
     short: { de: 'Parasailing, Bananenboot, Tube Ride, Twister und Jet Boat am Roten Meer.', en: 'Parasailing, banana boat, tube ride, twister, and jet boat on the Red Sea.' },
     description: {
       de: 'Erleben Sie eine Vielzahl aufregender Wasseraktivitäten am Roten Meer, die Abenteuer, Spaß und schöne Küstenansichten kombinieren. Verfügbare Aktivitäten: Parasailing (Fliegen über dem Meer mit Panoramablick), Bananenboot (Gruppenfahrt auf einem bananenartigen Schlauchboot), Tube Ride (Ritt auf einem Schlauch), Twister / Speed Boot (schnelle Fahrt mit Kurven und Drifts) und Jet Boat (High-Speed-Fahrt auf dem Meer).',
@@ -240,6 +261,7 @@ const excursions = [
     id: 'makadi-water-world', categoryId: 'aquapark',
     image: 'assets/activities/makadi-water-world/1.jpg',
     title: { de: 'Makadi Water World Aqua Park', en: 'Makadi Water World Aqua Park' },
+    price: { amount: 45 },
     short: { de: 'Großer Wasserpark mit vielen Attraktionen, Getränken, Snacks und Mittagessen.', en: 'Major water park with many attractions, drinks, snacks, and lunch.' },
     description: {
       de: 'Genießen Sie einen erlebnisreichen Tag im Makadi Water World, einem der größten Wasserparks Ägyptens mit zahlreichen Attraktionen für Groß und Klein. Das Programm umfasst Zugang zu verschiedenen Wasserrutschen und Attraktionen, heiße und kalte Getränke, Snacks und Kuchen. Das Mittagessen bietet Pizza, Pasta, Burger, Würstchen, Shawarma und mehr. Obst, Eis und Waffeln sind ebenfalls verfügbar.',
@@ -251,6 +273,7 @@ const excursions = [
     id: 'amc-royal', categoryId: 'aquapark',
     image: 'assets/activities/amc-royal/1.jpg',
     title: { de: 'AMC Royal Aqua Park', en: 'AMC Royal Aqua Park' },
+    price: { amount: 35 },
     short: { de: 'Erholungstag mit Wasserattraktionen, Strand, Sandwiches und Getränken.', en: 'Recreational day with water attractions, beach, sandwiches, and drinks.' },
     description: {
       de: 'Genießen Sie einen erholsamen Tag, der Wasseraktivitäten und Strandentspannung kombiniert. Das Programm umfasst Zugang zu einer Auswahl an Wasserattraktionen, Zeit am Strand, drei große Sandwiches, heiße oder kalte Softdrinks und Mineralwasser.',
@@ -262,6 +285,7 @@ const excursions = [
     id: 'new-eagles', categoryId: 'aquapark',
     image: 'https://images.pexels.com/photos/33326697/pexels-photo-33326697.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     title: { de: 'New Eagles Aqua Park', en: 'New Eagles Aqua Park' },
+    price: { amount: 30 },
     short: { de: 'Tag voller Wasserunterhaltung mit Strand, Mittagessen, Snacks und Getränken.', en: 'Day of water entertainment with beach, lunch, snacks, and cold drinks.' },
     description: {
       de: 'Genießen Sie einen Tag mit Wasserunterhaltung und Entspannung. Das Programm umfasst Zugang zu einer Vielzahl von Wasserattraktionen, Zeit am Sandstrand, Mittagessen, Snacks und kalte Softdrinks.',
@@ -273,6 +297,7 @@ const excursions = [
     id: 'horse-riding', categoryId: 'horse',
     image: 'assets/activities/horse-riding/1.jpg',
     title: { de: 'Pferdereiten', en: 'Horse Riding' },
+    price: { amount: 28 },
     short: { de: 'Entspanntes Reiten am Strand, in der Wüste oder beides kombiniert.', en: 'Relaxing horseback riding along the beach, desert, or both combined.' },
     description: {
       de: 'Genießen Sie ein entspanntes Naturerlebnis mit Pferdereiten am Strand oder durch die Wüste. Gäste können die Küstenlandschaft erkunden, die Schönheit der Wüste erleben oder beide Landschaften kombinieren für ein unvergessliches Abenteuer inmitten der Natur des Roten-Meer-Gebiets.',
@@ -284,6 +309,7 @@ const excursions = [
     id: 'mini-safari', categoryId: 'safari',
     image: 'assets/activities/mini-safari/1.jpg',
     title: { de: 'Mini Safari', en: 'Mini Safari' },
+    price: { amount: 24 },
     short: { de: 'Beach Buggy und Spider-Car durch die Wüste – Abenteuer pur.', en: 'Beach buggy and spider-car through the desert – pure adventure.' },
     description: {
       de: 'Erleben Sie ein aufregendes Wüstenabenteuer, das Offroad-Fahren und Naturerkundung kombiniert. Das Programm umfasst eine Beach-Buggy-Fahrt und eine Spider-Car-Fahrt, bei der Gäste den Nervenkitzel der Fahrt durch das Wüstengelände genießen.',
@@ -295,6 +321,7 @@ const excursions = [
     id: 'mega-safari', categoryId: 'safari',
     image: 'assets/activities/mega-safari/1.jpg',
     title: { de: 'Mega Safari', en: 'Mega Safari' },
+    price: { amount: 30 },
     short: { de: 'Buggy, Spider-Car und Aktivitäten im Safari-Center.', en: 'Buggy, spider-car, and activities at the safari center.' },
     description: {
       de: 'Genießen Sie ein Wüstenabenteuer, das Offroad-Fahren mit Freizeitaktivitäten im Safari-Center kombiniert. Das Programm umfasst eine Beach-Buggy-Fahrt, eine Spider-Car-Fahrt und Zeit, um die Wüstenumgebung und die Aktivitäten im Safari-Center zu genießen.',
@@ -306,6 +333,7 @@ const excursions = [
     id: 'family-safari', categoryId: 'safari',
     image: 'assets/activities/family-safari/1.jpg',
     title: { de: 'Family Safari', en: 'Family Safari' },
+    price: { amount: 25 },
     short: { de: 'Familienfreundliches Wüstenabenteuer mit Buggy, Jeep und Beduinen-Dorf.', en: 'Family-friendly desert adventure with buggy, jeep, and Bedouin village.' },
     description: {
       de: 'Genießen Sie ein familienfreundliches Wüstenabenteuer, das Offroad-Fahren, traditionelle Kultur und Outdoor-Aktivitäten kombiniert. Das Programm umfasst eine Beach-Buggy-Fahrt, eine Spider-Car-Fahrt und eine Jeep-Fahrt zum Beduinendorf. Gäste können ein traditionelles Beduinenhaus besuchen, die Beduinenkultur kennenlernen, Kamele reiten, traditionellen Beduinen-Tee trinken und das Dorf fotografieren.',
@@ -317,6 +345,7 @@ const excursions = [
     id: 'super-safari', categoryId: 'safari',
     image: 'assets/activities/super-safari/1.jpg',
     title: { de: 'Super Safari', en: 'Super Safari' },
+    price: { amount: 29 },
     short: { de: 'Umfassendes Wüstenerlebnis mit Buggy, Jeep, Beduinenkultur, Abendessen und Show.', en: 'Comprehensive desert experience with buggy, jeep, Bedouin culture, dinner, and show.' },
     description: {
       de: 'Genießen Sie ein umfassendes Wüstenerlebnis, das Offroad-Fahren, kulturelle Aktivitäten, traditionelles Essen und Unterhaltung kombiniert. Das Programm umfasst eine Beach-Buggy-Fahrt, eine Spider-Car-Fahrt und eine Jeep-Fahrt zum Beduinendorf. Gäste können ein traditionelles Beduinenhaus besuchen, die Beduinenkultur entdecken, Kamele reiten und traditionellen Beduinen-Tee genießen. Das Erlebnis umfasst auch ein Beduinen-Abendessen und eine unterhaltsame Abendshow.',
@@ -328,6 +357,7 @@ const excursions = [
     id: 'jeep-safari', categoryId: 'safari',
     image: 'assets/activities/jeep-safari/1.jpg',
     title: { de: 'Jeep Safari', en: 'Jeep Safari' },
+    price: { amount: 30 },
     short: { de: 'Jeep-Tour durch die Wüste zum Beduinendorf mit Kultur, Kamelreiten und Abendessen.', en: 'Jeep tour through the desert to Bedouin village with culture, camel riding, and dinner.' },
     description: {
       de: 'Erkunden Sie die Wüstenlandschaft auf einer Jeepsafari und entdecken Sie die traditionelle Lebensweise der Beduinen-Gemeinschaft. Das Programm umfasst eine Jeep-Fahrt durch die Wüste, einen Besuch des Beduinendorfs und eines traditionellen Beduinenhauses sowie die Möglichkeit, die lokale Kultur kennenzulernen. Gäste können auch Kamelreiten, traditionellen Beduinen-Tee, Abendessen und eine Beduinen-Unterhaltungsshow genießen.',
@@ -339,6 +369,7 @@ const excursions = [
     id: 'vip-sunset-safari', categoryId: 'safari',
     image: 'assets/activities/vip-sunset-safari/1.jpg',
     title: { de: 'VIP Sonnenuntergang Safari', en: 'VIP Sunset Safari' },
+    price: { amount: 34 },
     short: { de: 'Premium Wüstentour mit Buggy, Sonnenuntergang, Abendessen, Sternbeobachtung und Teleskop.', en: 'Premium desert tour with buggy, sunset, dinner, stargazing, and telescope.' },
     description: {
       de: 'Genießen Sie ein erstklassiges Wüstenabenteuer, das Offroad-Fahren, kulturelle Erlebnisse, Sonnenuntergangsblicke, traditionelles Essen und Sternbeobachtung kombiniert. Das Programm umfasst eine Beach-Buggy-Fahrt, eine Jeepsafari zum Beduinendorf, Kamelreiten, den Besuch eines uralten Akazienbaums und einer Bergöhle. Gäste können den Wüstensonnenuntergang bewundern und ein traditionelles Abendessen genießen (Viertelhähnchen, Kofta, Basmatireis, Wasser, Cola und Obst). Das Erlebnis endet mit einer traditionellen Beduinen-Versammlung unter den Sternen mit Sternbeobachtung durch ein Teleskop.',
@@ -350,6 +381,7 @@ const excursions = [
     id: 'sea-fishing-trip', categoryId: 'fishing',
     image: 'https://images.pexels.com/photos/18335889/pexels-photo-18335889.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     title: { de: 'Angelausflug auf dem Meer', en: 'Sea Fishing Trip' },
+    price: { amount: 40 },
     short: { de: 'Angelabenteuer im Roten Meer mit Küstenlandschaft und kristallklarem Wasser.', en: 'A fishing adventure in the Red Sea, with coastal scenery and crystal-clear water.' },
     description: {
       de: 'Genießen Sie ein Angelabenteuer im Roten Meer, umgeben von schöner Küstenlandschaft und kristallklarem Wasser. Der Ausflug bietet Gästen die Möglichkeit, an ausgewählten Stellen zu angeln, Zeit auf dem Meer zu verbringen und Freizeitangeln mit Freunden oder der Familie zu erleben. Das Programm kann Angelausrüstung, Unterstützung durch die Bootscrew und Zeit zum Genießen der Meeresumgebung umfassen. Die konkreten Leistungen hängen vom gewählten Paket ab.',
@@ -361,6 +393,7 @@ const excursions = [
     id: 'private-fishing-boat', categoryId: 'fishing',
     image: 'https://images.pexels.com/photos/22643815/pexels-photo-22643815.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     title: { de: 'Privater Angelboot-Ausflug', en: 'Private Fishing Boat Trip' },
+    price: { amount: 400, from: true, per: 'boat' },
     short: { de: 'Privates Angelboot exklusiv für Ihre Gruppe, mit Ausrüstung und Begleitung durch Kapitän und Crew.', en: 'A private fishing boat reserved for your group, with equipment and guidance from the captain and crew.' },
     description: {
       de: 'Genießen Sie einen privaten Angelausflug an Bord eines Bootes, das exklusiv für Ihre Gruppe reserviert ist. Dieses Erlebnis eignet sich ideal für Familien, Freunde und Angelfreunde, die eine persönlichere und flexiblere Tour suchen. Das Programm kann Angelruten, Rollen, Köder und weitere Angelausrüstung sowie die Begleitung durch Kapitän und Crew umfassen. Gäste können verschiedene Angelplätze im Roten Meer erkunden. Je nach Paket und Seebedingungen gibt es auch die Möglichkeit zum Schwimmen oder Entspannen an Bord.',
@@ -372,12 +405,121 @@ const excursions = [
     id: 'deep-sea-sport-fishing', categoryId: 'fishing',
     image: 'https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
     title: { de: 'Hochsee- und Sportangeln', en: 'Deep-Sea & Sport Fishing' },
+    price: { amount: 450, from: true, per: 'boat' },
     short: { de: 'Anspruchsvolleres Angeln in tieferen Gewässern des Roten Meeres, mit der Chance auf größere Fische.', en: 'A more challenging fishing adventure in the deeper waters of the Red Sea, with a chance to target larger fish.' },
     description: {
       de: 'Erleben Sie ein spezialisierteres Angelabenteuer in den tieferen Gewässern des Roten Meeres. Dieser Ausflug richtet sich an Angelfreunde, die ein anspruchsvolleres Erlebnis und die Möglichkeit suchen, größere Fische anzuvisieren.',
       en: 'Experience a more specialized fishing adventure in the deeper waters of the Red Sea. This excursion is designed for fishing enthusiasts seeking a more challenging experience and the opportunity to target larger fish.',
     },
     includes: { de: ['Tiefere Gewässer des Roten Meeres', 'Anspruchsvolleres Angelerlebnis', 'Möglichkeit auf größere Fische'], en: ['Deeper waters of the Red Sea', 'A more challenging fishing experience', 'Opportunity to target larger fish'] },
+  },
+  {
+    id: 'eden-island', categoryId: 'island',
+    image: 'assets/activities/eden-island/1.jpg',
+    title: { de: 'Eden-Insel Tagesausflug', en: 'Eden Island Day Trip' },
+    price: { amount: 66 },
+    short: { de: 'Ganztägiger Inselausflug mit Schnorcheln an Korallenriffen und All-you-can-eat-Buffet.', en: 'Full-day island trip with coral reef snorkeling and an all-you-can-eat buffet.' },
+    description: {
+      de: 'Verbringen Sie einen ganzen Tag (ca. 8:00–16:00 Uhr) auf der Eden-Insel mit ihrem kristallklaren, türkisfarbenen Wasser. Entspannen und schwimmen Sie am weißen Sandstrand und schnorcheln Sie den ganzen Tag an den Korallenriffen. Schnorchelausrüstung, ein All-you-can-eat-Mittagsbuffet mit Getränken sowie der Hin- und Rücktransfer zum Hotel sind inklusive.',
+      en: 'Spend a full day (approx. 8:00 am–4:00 pm) on Eden Island with its crystal-clear turquoise water. Relax and swim on the white sandy beach and snorkel at the coral reefs throughout the day. Snorkeling equipment, an all-you-can-eat lunch buffet with drinks, and round-trip hotel transfer are included.',
+    },
+    includes: { de: ['Hotelabholung & Rücktransfer', 'Ganztägiges Schnorcheln', 'Schnorchelausrüstung', 'All-you-can-eat-Mittagsbuffet', 'Getränke'], en: ['Hotel pickup & drop-off', 'Full-day snorkeling', 'Snorkeling equipment', 'All-you-can-eat lunch buffet', 'Drinks'] },
+  },
+  {
+    id: 'mahmya-island', categoryId: 'island',
+    image: 'assets/activities/mahmya-island/1.jpg',
+    title: { de: 'Mahmya Insel Tagesausflug', en: 'Mahmya Island Day Trip' },
+    price: { amount: 83 },
+    short: { de: 'Ein ganzer Tag am Strand der Mahmya Insel mit Schnorcheln, Mahlzeiten und Getränken.', en: 'A full day on the beach of Mahmya Island with snorkeling, meals, and drinks.' },
+    description: {
+      de: 'Genießen Sie einen ganzen Tag (ca. 8:00–16:30 Uhr) am Strand der Mahmya Insel im Giftun-Nationalpark. Erkunden Sie beim Schnorcheln die Korallenriffe und den Meeresboden und entspannen Sie unter den Palmendächern am Strand. Schnorchelausrüstung, Mahlzeiten und Getränke auf der Insel sowie der Hin- und Rücktransfer zum Hotel sind inklusive.',
+      en: 'Enjoy a full day (approx. 8:00 am–4:30 pm) on the beach of Mahmya Island in the Giftun National Park. Explore the coral reefs and seabed while snorkeling, and relax under the palm-leaf shades on the beach. Snorkeling equipment, meals and drinks on the island, and round-trip hotel transfer are included.',
+    },
+    includes: { de: ['Hotelabholung & Rücktransfer', 'Ganztägiger Strandaufenthalt', 'Schnorcheln', 'Schnorchelausrüstung', 'Mahlzeiten & Getränke'], en: ['Hotel pickup & drop-off', 'Full day on the beach', 'Snorkeling', 'Snorkeling equipment', 'Meals & drinks'] },
+  },
+  {
+    id: 'ozeria-island', categoryId: 'island',
+    image: 'assets/activities/ozeria-island/1.jpg',
+    title: { de: 'Insel Ozeria Tagesausflug', en: 'Ozeria Island Day Trip' },
+    price: { amount: 46 },
+    short: { de: 'Yachtausflug zu einer der neuesten Inseln Hurghadas mit Schnorcheln und Buffet.', en: "Yacht trip to one of Hurghada's newest islands with snorkeling and buffet." },
+    description: {
+      de: 'Treffpunkt ist um 08:30 Uhr am Yachthafen, um 09:00 Uhr legt die Yacht ab. Nach einer Stunde Schnorcheln an Korallenriffen mit bunten Fischen verbringen Sie drei Stunden auf der traumhaften Insel Ozeria – einer der neuesten und exklusivsten Inseln Hurghadas. Auf der Insel erwartet Sie ein Buffet mit Hähnchen, Kofta, gebratenem Fischfilet, Reis, Pasta, Ofenkartoffeln, fünf Salatsorten, saisonalen Früchten und Erfrischungsgetränken. Rückkehr gegen 16:00–16:30 Uhr.',
+      en: "Meet at the marina at 8:30 am; the yacht departs at 9:00 am. After one hour of snorkeling at coral reefs with colorful fish, you spend three hours on the beautiful Ozeria Island – one of Hurghada's newest and most exclusive islands. A buffet awaits on the island with chicken, kofta, fried fish fillet, rice, pasta, baked potatoes, five kinds of salad, seasonal fruit, and soft drinks. Return around 4:00–4:30 pm.",
+    },
+    includes: { de: ['Yachtfahrt', '1 Stunde Schnorcheln', '3 Stunden auf der Insel', 'Buffet auf der Insel', 'Erfrischungsgetränke'], en: ['Yacht trip', '1 hour of snorkeling', '3 hours on the island', 'Buffet on the island', 'Soft drinks'] },
+  },
+  {
+    id: 'bianca-island', categoryId: 'island',
+    image: 'https://images.pexels.com/photos/12858459/pexels-photo-12858459.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
+    title: { de: 'Insel Bianca Ganztagesausflug', en: 'Bianca Island Full-Day Trip' },
+    price: { amount: 49 },
+    short: { de: 'Inseltag mit Schnorcheln, Mittagsbuffet, Schaumparty und Strandaktivitäten.', en: 'Island day with snorkeling, lunch buffet, foam party, and beach activities.' },
+    description: {
+      de: 'Nach der Abholung vom Hotel im klimatisierten Fahrzeug bringt Sie ein Boot zur Insel Bianca. Schnorcheln Sie an den Korallenriffen und genießen Sie freie Zeit zum Schwimmen, Entspannen und Fotografieren im türkisfarbenen Wasser und am weißen Sand. Auf der Insel gibt es ein Mittagsbuffet, Getränke (je nach gewähltem Programm), Schaumparty, Spiele, Strandvolleyball und einen Bereich mit Aktivitäten für Kinder. Danach geht es zurück zum Yachthafen und zum Hotel.',
+      en: 'After pickup from your hotel in an air-conditioned vehicle, a boat takes you to Bianca Island. Snorkel at the coral reefs and enjoy free time to swim, relax, and take photos in the turquoise water and white sand. The island offers a lunch buffet, drinks (depending on the chosen program), a foam party, games, beach volleyball, and an area with activities for children. Afterwards you return to the marina and your hotel.',
+    },
+    includes: { de: ['Hoteltransfer', 'Bootstransfer zur Insel', 'Schnorcheln', 'Mittagsbuffet', 'Schaumparty & Spiele', 'Kinderbereich'], en: ['Hotel transfer', 'Boat transfer to the island', 'Snorkeling', 'Lunch buffet', 'Foam party & games', "Children's area"] },
+  },
+  {
+    id: 'private-speedboat', categoryId: 'luxury',
+    image: 'assets/activities/private-speedboat/1.jpg',
+    title: { de: 'Privater Speedboot-Ausflug', en: 'Private Speedboat Trip' },
+    price: { amount: 130, per: 'boat', note: { de: 'Privatboot für bis zu 6 Personen', en: 'Private boat for up to 6 people' } },
+    short: { de: 'Vier Stunden privat im Speedboot – Schnorcheln und White Island mit Familie oder Freunden.', en: 'Four private hours by speedboat – snorkeling and White Island with family or friends.' },
+    description: {
+      de: 'Entdecken Sie das Rote Meer in privater Umgebung mit Familie, Partner oder Freunden. Der vierstündige Ausflug findet vormittags oder nachmittags statt, für maximal 6 Personen. Zur Auswahl stehen Schnorcheln und ein Besuch der White Island; der Besuch einer anderen Insel ist gegen Aufpreis möglich. Hoteltransfer, Schnorchelausrüstung und ein Snack an Bord sind inklusive.',
+      en: 'Discover the Red Sea privately with your family, partner, or friends. The four-hour trip runs in the morning or afternoon for up to 6 people. Choose snorkeling and a visit to White Island; a visit to another island is available for an extra charge. Hotel transfer, snorkeling equipment, and a snack on board are included.',
+    },
+    includes: { de: ['Privates Speedboot (max. 6 Personen)', 'Hotelabholung & Rücktransfer', 'Schnorchelausrüstung', 'Snack an Bord', 'White Island'], en: ['Private speedboat (max. 6 people)', 'Hotel pickup & drop-off', 'Snorkeling equipment', 'Snack on board', 'White Island'] },
+  },
+  {
+    id: 'parasailing', categoryId: 'watersports',
+    image: 'assets/activities/water-sports/1.jpg',
+    title: { de: 'Parasailing am Roten Meer', en: 'Parasailing on the Red Sea' },
+    price: { amount: 19, note: { de: 'Einzel 19 € · Tandem (zu zweit) 25 €', en: 'Single €19 · Tandem (two people) €25' } },
+    short: { de: 'Zehn Minuten am Fallschirm hinter dem Schnellboot mit Blick über das Rote Meer.', en: 'Ten minutes on a parachute behind a speedboat with views over the Red Sea.' },
+    description: {
+      de: 'Schweben Sie am Fallschirm über das Rote Meer, gezogen von einem Schnellboot. Der Flug dauert etwa 10 Minuten und bietet einen einmaligen Blick über Küste und Meer – allein oder als Tandem zu zweit. Der Hin- und Rücktransfer zum Hotel ist inbegriffen.',
+      en: 'Glide over the Red Sea on a parachute towed by a speedboat. The flight lasts about 10 minutes and offers a unique view over the coast and the sea – solo or as a tandem for two. Round-trip hotel transfer is included.',
+    },
+    includes: { de: ['10 Minuten Flug', 'Schnellboot', 'Hotelabholung & Rücktransfer'], en: ['10-minute flight', 'Speedboat', 'Hotel pickup & drop-off'] },
+  },
+  {
+    id: 'aquarium', categoryId: 'dolphin',
+    image: 'assets/activities/aquarium/1.jpg',
+    title: { de: 'Aquarium & Mini-Zoo', en: 'Aquarium & Mini Zoo' },
+    price: { amount: 34 },
+    short: { de: 'Unterwassertunnel mit über 1.200 Tierarten, Mini-Zoo und optionaler Hai-Show.', en: 'Underwater tunnel with over 1,200 species, a mini zoo, and an optional shark show.' },
+    description: {
+      de: 'Besuchen Sie das große Aquarium in Hurghada mit mehr als 1.200 Tierarten und einem begehbaren Unterwassertunnel. Im Mini-Zoo gibt es Krokodile, Affen, Vögel und andere Tiere. Optional können Sie eine 40-minütige Hai-Show erleben. Termine morgens oder nachmittags, Gesamtdauer etwa 2 Stunden inklusive Hin- und Rücktransfer zum Hotel.',
+      en: 'Visit the large aquarium in Hurghada with more than 1,200 species and a walk-through underwater tunnel. The mini zoo has crocodiles, monkeys, birds, and other animals. Optionally, you can watch a 40-minute shark show. Morning or afternoon slots, about 2 hours in total including round-trip hotel transfer.',
+    },
+    includes: { de: ['Eintritt Aquarium & Mini-Zoo', '40 Minuten Besuch', 'Hotelabholung & Rücktransfer', 'Hai-Show (optional)'], en: ['Aquarium & mini zoo entry', '40-minute visit', 'Hotel pickup & drop-off', 'Shark show (optional)'] },
+  },
+  {
+    id: 'lions-hurghada', categoryId: 'safari',
+    image: 'assets/activities/lions-hurghada/1.jpg',
+    title: { de: 'Löwen hautnah', en: 'Up Close with Lions' },
+    price: { amount: 34 },
+    short: { de: 'Ein außergewöhnliches Erlebnis mit Löwen in Hurghada – für Familien, Kinder und Erwachsene.', en: 'An extraordinary experience with lions in Hurghada – for families, children, and adults.' },
+    description: {
+      de: 'Bereit für ein Treffen mit dem „König“? Erleben Sie Löwen hautnah in Hurghada – ein außergewöhnliches und aufregendes Erlebnis für Familien, Kinder und Erwachsene. Halten Sie den Moment mit einzigartigen Fotos fest. Für Buchungen und Details kontaktieren Sie uns gerne.',
+      en: 'Ready to meet the "king"? Get up close with lions in Hurghada – an extraordinary and exciting experience for families, children, and adults. Capture the moment with unique photos. Contact us for bookings and details.',
+    },
+    includes: { de: ['Für Familien geeignet', 'Einzigartige Fotos', 'Außergewöhnliches Erlebnis'], en: ['Family-friendly', 'Unique photos', 'Extraordinary experience'] },
+  },
+  {
+    id: 'massage-spa', categoryId: 'wellness',
+    image: 'assets/activities/massage-spa/1.jpg',
+    title: { de: 'Massage & Spa', en: 'Massage & Spa' },
+    price: { amount: 34 },
+    short: { de: 'Rund 2,5 Stunden Wellness mit 40 Minuten Massage, Sauna, Whirlpool, Hammam und Salzgrotte.', en: 'About 2.5 hours of wellness with a 40-minute massage, sauna, whirlpool, hammam, and salt grotto.' },
+    description: {
+      de: 'Gönnen Sie sich eine Auszeit: Das Wellness-Programm dauert etwa 2 Stunden und 30 Minuten und umfasst eine 40-minütige Massage, Sauna, Whirlpool, Hammam mit Peeling sowie die Salzgrotte. Der Hin- und Rücktransfer zum Hotel ist inklusive.',
+      en: 'Treat yourself to some time out: the wellness program lasts about 2 hours and 30 minutes and includes a 40-minute massage, sauna, whirlpool, hammam with peeling, and the salt grotto. Round-trip hotel transfer is included.',
+    },
+    includes: { de: ['40 Minuten Massage', 'Sauna', 'Whirlpool', 'Hammam & Peeling', 'Salzgrotte', 'Hotelabholung & Rücktransfer'], en: ['40-minute massage', 'Sauna', 'Whirlpool', 'Hammam & peeling', 'Salt grotto', 'Hotel pickup & drop-off'] },
   },
 ];
 

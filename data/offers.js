@@ -10,7 +10,7 @@ window.SITE_OFFERS = {
         "de": "Zwei Schnorchelstops, weißer Sandstrand und Mittagessen an Bord.",
         "en": "Two snorkeling stops, a white sand beach, and lunch on board."
       },
-      "price": "29 €",
+      "price": "24 €",
       "time": {
         "de": "Ganztägig",
         "en": "Full day"
@@ -40,7 +40,7 @@ window.SITE_OFFERS = {
         "de": "Buggy, Jeep, Beduinendorf, Abendessen und Abendshow.",
         "en": "Buggy, jeep, Bedouin village, dinner, and an evening show."
       },
-      "price": "35 €",
+      "price": "29 €",
       "time": {
         "de": "Abends",
         "en": "Evening"

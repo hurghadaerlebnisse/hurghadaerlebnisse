@@ -54,6 +54,10 @@ const translations = {
       prevImage: 'Vorheriges Bild',
       nextImage: 'Nächstes Bild',
       whatsappMessage: 'Hallo Hurghada Erlebnisse, ich interessiere mich für diesen Ausflug:',
+      priceFrom: 'ab',
+      perPerson: 'pro Person',
+      perBoat: 'pro Boot',
+      priceOnRequest: 'Preis auf Anfrage',
     },
     contact: {
       badge: 'Kontakt',
@@ -91,6 +95,7 @@ const translations = {
       horse: 'Pferdereiten',
       safari: 'Wüstensafari-Abenteuer',
       fishing: 'Angelausflüge & Hochseefischen',
+      wellness: 'Wellness & Spa',
     },
   },
   en: {
@@ -148,6 +153,10 @@ const translations = {
       prevImage: 'Previous image',
       nextImage: 'Next image',
       whatsappMessage: 'Hello Hurghada Erlebnisse, I am interested in this excursion:',
+      priceFrom: 'from',
+      perPerson: 'per person',
+      perBoat: 'per boat',
+      priceOnRequest: 'Price on request',
     },
     contact: {
       badge: 'Contact',
@@ -185,6 +194,7 @@ const translations = {
       horse: 'Horse Riding',
       safari: 'Desert Safari Adventures',
       fishing: 'Fishing Trips & Sea Fishing Excursions',
+      wellness: 'Wellness & Spa',
     },
   },
 };
