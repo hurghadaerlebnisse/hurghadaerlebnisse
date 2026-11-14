@@ -3,8 +3,8 @@ window.SITE_OFFERS = {
   "offers": [
     {
       "name": {
-        "de": "Orange Bay Insel",
-        "en": "Orange Bay Island"
+        "de": "Pauschalreise",
+        "en": "Pauschalreise"
       },
       "description": {
         "de": "Zwei Schnorchelstops, weißer Sandstrand und Mittagessen an Bord.",
