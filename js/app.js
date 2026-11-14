@@ -128,6 +128,14 @@ function offerText(value) {
   return value || '';
 }
 
+// Offer descriptions: **text** becomes bold, line breaks are kept
+function offerRichText(value) {
+  return escapeHtml(String(value ?? '').trim())
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*\*/g, '')
+    .replace(/\s*\n\s*/g, '<br>');
+}
+
 function escapeHtml(value) {
   return String(value ?? '').replace(/[&<>"']/g, (ch) => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
@@ -174,7 +182,7 @@ function renderOffers() {
         </span>
       </div>
       <h2 class="offer-name">${escapeHtml(offerText(offer.name))}</h2>
-      <p class="offer-desc">${escapeHtml(offerText(offer.description))}</p>
+      <p class="offer-desc">${offerRichText(offerText(offer.description))}</p>
       <div class="offer-foot">
         <div>
           <span class="offer-price-label">${escapeHtml(t().hero.offerFrom)}</span>

@@ -1,25 +1,30 @@
-/* Offer data for the homepage slider. Edit this file to add, remove, or change offers. */
+/* Offer data for the homepage slider. Edit this file to add, remove, or change offers.
+   - description: for several lines, put the text between backticks ` ` instead of quotes.
+     Each new line shows as a new line on the card, and **text** is shown in bold.
+   - price: just the amount (e.g. "399 €"). The card already shows "ab" / "from" above it. */
 window.SITE_OFFERS = {
   "offers": [
     {
       "name": {
         "de": "Pauschalreise",
-        "en": "Pauschalreise"
+        "en": "Package Holiday"
       },
       "description": {
-        "de": "TRAUMURLAUB AM ROTEN MEER**
-6 Tage Pauschalreise ab München (MUC)**
-Ab unschlagbaren **399,- €** pro Person!
-4-Sterne-Hotel** direkt am hoteleigenen Strand
-Inklusive **Flug & Unterkunft**  All-Inclusive 
- Über **30 unvergessliche Ausflüge** vor Ort buchbar
-.",
-        "en": "Two snorkeling stops, a white sand beach, and lunch on board."
+        "de": `**Traumurlaub am Roten Meer**
+6 Tage ab München (MUC)
+**4-Sterne-Hotel** direkt am hoteleigenen Strand
+**Flug & Unterkunft** inklusive, All Inclusive
+Über **30 Ausflüge** vor Ort buchbar`,
+        "en": `**Dream holiday on the Red Sea**
+6 days from Munich (MUC)
+**4-star hotel** right on its own beach
+**Flight & accommodation** included, all inclusive
+Over **30 excursions** to book on site`
       },
-      "price": "ab 399,00€",
+      "price": "399 €",
       "time": {
         "de": "6 Tage",
-        "en": "Full day"
+        "en": "6 days"
       }
     },
     {
