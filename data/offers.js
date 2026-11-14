@@ -9,7 +9,6 @@ window.SITE_OFFERS = {
       "description": {
         "de": "TRAUMURLAUB AM ROTEN MEER**
 6 Tage Pauschalreise ab München (MUC)**
-
 Ab unschlagbaren **399,- €** pro Person!
 4-Sterne-Hotel** direkt am hoteleigenen Strand
 Inklusive **Flug & Unterkunft**  All-Inclusive 
